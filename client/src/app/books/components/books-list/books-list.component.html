@@ -1,0 +1,7 @@
+<h3>{{bookSelected}}</h3>
+<div class="main-container">
+    @for(book of books; track book.id; let i = $index){
+        <books-components-book
+        [book]="book"></books-components-book>
+    }
+</div>

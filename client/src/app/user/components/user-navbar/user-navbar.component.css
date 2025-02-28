@@ -1,0 +1,118 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f1eb;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #5a4f43;
+}
+
+header {
+    position: relative;
+    text-align: center;
+    background-color: #fff5e1;
+    padding: 2rem;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #d1a15c;
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    position: relative;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #4a3926;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #8d6748;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.logout-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #8d6748;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn:hover {
+    color: #4a3926;
+}
+
+.logout-btn::before {
+    content: "🔓";
+    margin-right: 5px;
+    font-size: 1.3rem;
+}
+
+user-main-page {
+    max-width: 600px;
+    width: 100%;
+    padding: 1rem;
+}
+
+
+nav {
+    width: 100%;
+    background-color: #fff5e1;  
+    padding: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.nav-list li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-list li a {
+    color: #8d6748;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    background-color: #8d6748;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+}

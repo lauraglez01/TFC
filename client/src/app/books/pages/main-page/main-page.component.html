@@ -1,0 +1,8 @@
+<select (change)="filterByCategories($event)">
+    <option value="all">All Categories</option>
+    <option value="Adventure">Adventure</option>
+    <option value="Mystery">Mystery</option>
+    <option value="Dystopian Fiction">Dystopian Fiction</option>
+</select>
+
+<books-components-books-list [books]="books"></books-components-books-list>
