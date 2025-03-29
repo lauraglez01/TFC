@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './user/components/login/login.component';
-import { ProfileComponent } from './user/components/profile/profile.component';
 import { RegisterComponent } from './user/components/register/register.component';
 import { RegeneratePasswordComponent } from './user/components/regenerate-password/regenerate-password.component';
 import { MainPageComponent as UserMainPage } from './user/pages/main-page/main-page.component';
@@ -11,6 +10,10 @@ import { MainPageComponent as UserMainPage } from './user/pages/main-page/main-p
 import { MainPageComponent as BooksMainPage} from './books/pages/main-page/main-page.component';
 import { BooksListComponent } from './books/components/books-list/books-list.component';
 import { BookComponent } from './books/components/book/book.component';
+
+import { MainPageComponent as SectionsMainPage } from './sections/pages/main-page/main-page.component';
+import { NavbarComponent } from './sections/components/navbar/navbar.component';
+import { HomeComponent } from './sections/components/home/home.component';
 
 import { MainPageComponent as ReviewsMainPage } from './reviews/pages/main-page/main-page.component';
 import { ReviewsListComponent } from './reviews/components/reviews-list/reviews-list.component';
@@ -23,9 +26,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'regenerate-password', component: RegeneratePasswordComponent },
   { path: 'new-password', component: NewPasswordComponent },
-  { path: 'books', component: BooksMainPage, canActivate: [AuthGuard]},
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+  { path: 'home', component: HomeComponent },
+  { path: 'explore', component: BooksMainPage },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
+  { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe
 ];
 
 @NgModule({

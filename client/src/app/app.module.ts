@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { SectionsModule } from "./sections/sections.module";
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { RouterModule } from '@angular/router';
     UserModule,
     ReviewsModule,
     AppRoutingModule,
-    RouterModule
-  ],
+    RouterModule,
+    SectionsModule
+],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -28,7 +28,7 @@ header {
 
 h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
+    font-size: 4rem;
     color: #4a3926;
     margin: 0;
 }
@@ -38,9 +38,16 @@ h1 {
     color: #8d6748;
     font-style: italic;
     margin-top: 0.5rem;
+    font-weight: 500;
 }
 
-.logout-btn {
+.login-btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logout-btn,
+.login-btn{
     position: absolute;
     top: 0.5rem;
     right: 1rem;
@@ -54,11 +61,13 @@ h1 {
     align-items: center;
 }
 
-.logout-btn:hover {
+.logout-btn:hover,
+.login-btn:hover{
     color: #4a3926;
 }
 
-.logout-btn::before {
+.logout-btn::before,
+.login-btn::before{
     content: "🔓";
     margin-right: 5px;
     font-size: 1.3rem;

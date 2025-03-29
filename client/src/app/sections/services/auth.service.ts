@@ -28,24 +28,24 @@ export class AuthService {
   }
 
   logout(): void {
-    const token = this.getToken(); 
+    const token = this.getToken();
     if (!token) {
       console.error('No token found');
       return;
     }
     this.http.post('http://127.0.0.1/api/logout', {}, {
       headers: {
-        'Authorization': `Bearer ${this.getToken()}`
-      }
+        Authorization: `Bearer ${this.getToken()}`,
+      },
     }).subscribe({
       next: () => {
-        localStorage.removeItem('accessToken');  
-        this.router.navigate(['/login']);
+        localStorage.removeItem('accessToken');
+        this.router.navigate(['/home']); // Redirige a /home después de cerrar sesión
       },
       error: (err) => {
         console.error('Error during logout', err);
-      }
-    });    
+      },
+    });
   }
   
   isAuthenticated(): boolean {
