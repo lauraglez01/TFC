@@ -14,6 +14,7 @@ import { BookComponent } from './books/components/book/book.component';
 import { MainPageComponent as SectionsMainPage } from './sections/pages/main-page/main-page.component';
 import { NavbarComponent } from './sections/components/navbar/navbar.component';
 import { HomeComponent } from './sections/components/home/home.component';
+import { DashboardComponent } from './sections/components/dashboard/dashboard.component';
 
 import { MainPageComponent as ReviewsMainPage } from './reviews/pages/main-page/main-page.component';
 import { ReviewsListComponent } from './reviews/components/reviews-list/reviews-list.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
   { path: 'regenerate-password', component: RegeneratePasswordComponent },
   { path: 'new-password', component: NewPasswordComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'explore', component: BooksMainPage },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe
 ];

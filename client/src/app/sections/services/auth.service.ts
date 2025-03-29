@@ -40,7 +40,7 @@ export class AuthService {
     }).subscribe({
       next: () => {
         localStorage.removeItem('accessToken');
-        this.router.navigate(['/home']); // Redirige a /home después de cerrar sesión
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Error during logout', err);
