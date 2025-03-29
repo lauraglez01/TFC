@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer(column: 'published_year');
             $table->string('isbn');
             $table->json('categories');
+            $table->string('cover');
             $table->timestamps();
         });
     }

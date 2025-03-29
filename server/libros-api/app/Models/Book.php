@@ -12,7 +12,7 @@ class Book extends Model
 
     protected $table = 'books';
 
-    protected $fillable = ['title','author', 'country', 'description', 'published_year', 'categories', 'isbn'];
+    protected $fillable = ['title','author', 'country', 'description', 'published_year', 'categories', 'isbn', 'cover'];
 
     protected $casts = [
         'categories' => 'array', 
