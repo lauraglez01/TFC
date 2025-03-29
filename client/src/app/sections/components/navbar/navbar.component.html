@@ -1,18 +1,18 @@
 <header>
     <div class="header-content">
-      <h1>{{ title }}</h1>
-      <p class="subtitle">La página perfecta para amantes de los libros... ¡y las galletas!</p>
+      <img src="/assets/img/logo.png" alt="{{title}}">
+      <p class="subtitle">The perfect place for book lovers... and cookies!</p>
       @if(!authService.isAuthenticated()) {
-        <button class="login-btn"><a routerLink="/login"><b>Iniciar sesión</b></a></button>
+        <button class="login-btn"><a routerLink="/login"><b>Log In</b></a></button>
       }
       @if(authService.isAuthenticated()){
-        <button class="logout-btn" (click)="authService.logout()"><b>Cerrar sesión</b></button>
+        <button class="logout-btn" (click)="authService.logout()"><b>Log Out</b></button>
       }
     </div>
   </header>
   <nav>
     <ul class="nav-list">
-      <li><a routerLink="/home">Inicio</a></li>
-      <li><a routerLink="/explore">Explorar</a></li>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/explore">Explore</a></li>
     </ul>
   </nav>

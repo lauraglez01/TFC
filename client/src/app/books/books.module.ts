@@ -4,6 +4,7 @@ import { BookComponent } from './components/book/book.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { provideHttpClient } from '@angular/common/http';
+import { Book } from './interfaces/book.interface';
 
 
 
@@ -20,7 +21,8 @@ import { provideHttpClient } from '@angular/common/http';
     CommonModule
   ],
   exports: [
-    MainPageComponent
+    MainPageComponent,
+    BookComponent
   ]
 })
 export class BooksModule { }

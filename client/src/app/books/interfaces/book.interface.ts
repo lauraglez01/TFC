@@ -7,4 +7,5 @@ export interface Book {
     published_year: number;
     categories: string[];
     isbn: string;
+    cover: string;
 }  

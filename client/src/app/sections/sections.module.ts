@@ -5,6 +5,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { BooksModule } from '../books/books.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BooksModule
   ],
   exports: [
     MainPageComponent,

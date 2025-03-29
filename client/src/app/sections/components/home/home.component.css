@@ -1,0 +1,48 @@
+/*VERSIÓN MÓVIL*/
+.carousel-item img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.book-1{
+    object-position: top;
+}
+
+.book-2{
+    object-position:50% 80%; /*50% → centra la imagen en horizontal
+                            80% → mueve la imagen hacia arriba*/
+}
+
+.carousel-item img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.carousel-caption .custom-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    max-width: 80%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/*VERSIÓN ESCRITORIO*/
+@media (min-width: 768px) {
+    .carousel-item img {
+        height: 400px; 
+    }
+    .carousel-content {
+        text-align: center;
+    }
+    .carousel-content .book-title {
+        font-size: 2rem;
+    }
+    .carousel-content .book-description {
+        font-size: 1.2rem;
+    }
+}

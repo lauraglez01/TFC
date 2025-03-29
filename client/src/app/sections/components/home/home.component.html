@@ -1,1 +1,47 @@
-<p>home works!</p>
+<section id="recommended" class="mt-5 pt-5">
+    <div class="container">
+        <h2 class="text-center">Recommended for you</h2>
+        <div id="carouselRec" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button
+                    *ngFor="let book of recommendedBooks; let i = index"
+                    type="button"
+                    data-bs-target="#carouselRec"
+                    [attr.data-bs-slide-to]="i"
+                    [class.active]="i === 0"
+                    [attr.aria-current]="i === 0 ? 'true' : null"
+                    [attr.aria-label]="'Slide ' + (i + 1)">
+                </button>
+            </div>
+            <div class="carousel-inner">
+                <div
+                    *ngFor="let book of recommendedBooks; let i = index"
+                    class="carousel-item"
+                    [class.active]="i === 0">
+                    <div class="row align-items-center">
+                        <!-- Columna para la portada -->
+                        <div class="col-md-6">
+                            <img [src]="book.cover" [alt]="book.title" class="d-block w-100">
+                        </div>
+                        <!-- Columna para el título, descripción y botón -->
+                        <div class="col-md-6">
+                            <div class="carousel-content">
+                                <h5 class="book-title">{{ book.title }}</h5>
+                                <p class="book-description">{{ book.description }}</p>
+                                <button class="btn btn-primary">Read more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselRec" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselRec" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
