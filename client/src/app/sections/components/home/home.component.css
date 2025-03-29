@@ -1,48 +1,99 @@
-/*VERSIÓN MÓVIL*/
-.carousel-item img {
+#carouselRec {
+    max-width: 90%;
     height: 300px;
-    object-fit: cover;
+    margin: 0 auto;
+    overflow: hidden;
+    background: linear-gradient(-135deg, #c9a375, #e0c3a3, #f5e0c3); /* Degradado colores tierra */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.book-1{
-    object-position: top;
+#carouselRec .row {
+    align-items: center;
+    height: 100%;
+    text-align: center;
 }
 
-.book-2{
-    object-position:50% 80%; /*50% → centra la imagen en horizontal
-                            80% → mueve la imagen hacia arriba*/
+#carouselRec img {
+    padding: 15px;
+    max-height: 300px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    filter: sepia(100%);
+    transition: filter 0.5s ease;
 }
 
-.carousel-item img {
-    height: 300px;
-    object-fit: cover;
+#carouselRec img:hover {
+    filter: sepia(50%);
 }
 
-.carousel-caption .custom-caption {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff; 
-    padding: 10px 15px; 
-    border-radius: 5px; 
-    font-size: 14px; 
-    max-width: 80%; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+.carousel-content {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-/*VERSIÓN ESCRITORIO*/
-@media (min-width: 768px) {
-    .carousel-item img {
-        height: 400px; 
+.carousel-content .book-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #8d6748;
+}
+
+.carousel-content .book-description {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
+
+.carousel-content .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    white-space: nowrap;
+    background-color: #8d6748;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.carousel-content .btn:hover {
+    background-color: #a97d5d;
+}
+
+@media (max-width: 767px) {
+    #recommended {
+        margin-top: 20px;
     }
+
+    #carouselRec {
+        height: auto;
+    }
+
+    #carouselRec img {
+        max-height: 200px;
+        width: auto;
+    }
+
     .carousel-content {
+        width: 100%;
         text-align: center;
+        display: block;
     }
-    .carousel-content .book-title {
-        font-size: 2rem;
-    }
-    .carousel-content .book-description {
-        font-size: 1.2rem;
+
+    .carousel-content .book-description-and-button {
+        flex-direction: column;
+        gap: 5px;
     }
 }

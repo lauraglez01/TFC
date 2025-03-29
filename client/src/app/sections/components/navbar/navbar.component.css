@@ -19,7 +19,6 @@ header {
     width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-bottom: 2px solid #d1a15c;
-    margin-bottom: 2rem;
 }
 
 .header-content {
@@ -112,6 +111,13 @@ nav {
 .nav-list li a:hover {
     background-color: #8d6748;
     color: white;
+}
+
+.logo{
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 @media (max-width: 768px) {
