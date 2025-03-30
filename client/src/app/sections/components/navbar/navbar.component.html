@@ -4,26 +4,30 @@
     <p class="subtitle">The perfect place for book lovers... and cookies!</p>
 
     <!-- Pantalla de carga -->
-    <div *ngIf="authService.isLoading$ | async" class="loading-overlay">
-      <div class="spinner"></div>
-      <p>Loading...</p>
-    </div>
+     @if(authService.isLoading$ | async) { 
+        <div class="loading-overlay">
+          <div class="spinner"></div>
+          <p>Loading...</p>
+        </div>
+     }
 
-    <button *ngIf="!(authService.isAuthenticated() || (authService.isLoading$ | async))" class="login-btn">
-      <a routerLink="/login"><b>Log In</b></a>
-    </button>
+     @if(!(authService.isAuthenticated() || (authService.isLoading$ | async))) { 
+        <button class="login-btn">
+          <a routerLink="/login"><b>Log In</b></a>
+        </button>
+     }
 
-    <button *ngIf="authService.isAuthenticated() && !(authService.isLoading$ | async)" 
-            class="logout-btn" 
-            (click)="authService.logout()">
-      <b>Log Out</b>
-    </button>
+     @if(authService.isAuthenticated() && !(authService.isLoading$ | async)) { 
+        <button class="logout-btn" (click)="authService.logout()">
+          <b>Log Out</b>
+        </button>
+     }
   </div>
 </header>
 
 <nav>
   <ul class="nav-list">
     <li><a routerLink="/home">Home</a></li>
-    <li><a routerLink="/dashboard">My Books</a></li>
+    <li><a routerLink="/dashboard">Dashboard</a></li>
   </ul>
 </nav>

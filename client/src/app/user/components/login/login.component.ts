@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-
+import { AuthService } from '../../../sections/services/auth.service';
 @Component({
   selector: 'user-components-login',
   standalone: false,
@@ -17,11 +16,19 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router
   ) {
+    const rememberedEmail = localStorage.getItem('rememberedEmail') || '';
+    const rememberMe = !!rememberedEmail;
+  
     this.loginForm = this.fb.group({
-      email: [localStorage.getItem('rememberedEmail') || '', [Validators.required, Validators.email]],
+      email: [rememberedEmail, [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      rememberMe: [localStorage.getItem('rememberedEmail') ? true : false] 
+      rememberMe: [rememberMe],
     });
+  
+    // Redirige a /home si el usuario ya está autenticado
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/home']);
+    }
   }
   
   onSubmit() {
@@ -33,9 +40,9 @@ export class LoginComponent {
     const { email, password, rememberMe } = this.loginForm.value;
   
     if (rememberMe) {
-      localStorage.setItem('rememberedEmail', email); 
+      localStorage.setItem('rememberedEmail', email); // Guarda el email si "Remember me" está seleccionado
     } else {
-      localStorage.removeItem('rememberedEmail'); 
+      localStorage.removeItem('rememberedEmail'); // Elimina el email si "Remember me" no está seleccionado
     }
   
     this.authService.login(email, password).subscribe({
@@ -52,5 +59,5 @@ export class LoginComponent {
         alert(error.error?.message || 'Error al iniciar sesión');
       }
     });
-  }  
+  }
 }

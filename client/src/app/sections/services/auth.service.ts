@@ -12,10 +12,12 @@ export class AuthService {
   private url: string = 'http://127.0.0.1/api';
   private token: string | null = localStorage.getItem('accessToken');
   private authState = new BehaviorSubject<boolean>(this.isAuthenticated());
-  
-  // 🔹 Ahora isLoading es un BehaviorSubject
+
+  // Exponer el observable authState$ para que otros componentes o guards puedan suscribirse
+  public authState$ = this.authState.asObservable();
+
   private isLoadingSubject = new BehaviorSubject<boolean>(false);
-  public isLoading$ = this.isLoadingSubject.asObservable(); 
+  public isLoading$ = this.isLoadingSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -26,7 +28,7 @@ export class AuthService {
   setToken(token: string): void {
     this.token = token;
     localStorage.setItem('accessToken', token);
-    this.authState.next(true);
+    this.authState.next(true); // Actualiza el estado de autenticación
   }
 
   getToken(): string | null {
@@ -34,8 +36,8 @@ export class AuthService {
   }
 
   logout(): void {
-    this.isLoadingSubject.next(true); // 🔹 Activa el estado de carga
-
+    this.isLoadingSubject.next(true); // Activa el estado de carga
+  
     this.http.post(`${this.url}/logout`, {}, { headers: { Authorization: `Bearer ${this.getToken()}` } })
       .subscribe({
         next: () => this.clearSession(),
@@ -45,14 +47,14 @@ export class AuthService {
         }
       });
   }
-
+  
   private clearSession(): void {
     setTimeout(() => {
       localStorage.removeItem('accessToken');
       this.token = null;
-      this.authState.next(false);
+      this.authState.next(false); // Actualiza el estado de autenticación
       this.isLoadingSubject.next(false);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']); // Redirige a /home después de hacer logout
     }, 500); 
   }
 

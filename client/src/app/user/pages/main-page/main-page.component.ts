@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../sections/services/auth.service';
 @Component({
   selector: 'user-main-page',
   standalone: false,

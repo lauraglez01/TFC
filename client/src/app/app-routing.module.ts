@@ -15,12 +15,12 @@ import { MainPageComponent as SectionsMainPage } from './sections/pages/main-pag
 import { NavbarComponent } from './sections/components/navbar/navbar.component';
 import { HomeComponent } from './sections/components/home/home.component';
 import { DashboardComponent } from './sections/components/dashboard/dashboard.component';
+import { AuthGuard as SectionsGuard } from './sections/services/auth.guard';
 
 import { MainPageComponent as ReviewsMainPage } from './reviews/pages/main-page/main-page.component';
 import { ReviewsListComponent } from './reviews/components/reviews-list/reviews-list.component';
 import { ReviewComponent } from './reviews/components/review/review.component';
 import { NewPasswordComponent } from './user/components/new-password/new-password.component';
-import { AuthGuard } from './user/services/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'regenerate-password', component: RegeneratePasswordComponent },
   { path: 'new-password', component: NewPasswordComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [SectionsGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe
 ];
