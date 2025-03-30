@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  getAuthState() {
+    throw new Error('Method not implemented.');
+  }
 
   private url: string = 'http://127.0.0.1/api';
   private token: string | null = null;  

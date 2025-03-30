@@ -18,11 +18,9 @@
                 @for (book of recommendedBooks; track book.id; let i = $index) {
                     <div class="carousel-item" [class.active]="i === 0">
                         <div class="row align-items-center">
-                            <!-- Columna para la portada -->
                             <div class="col-md-6">
                                 <img [src]="book.cover" [alt]="book.title" class="d-block w-100">
                             </div>
-                            <!-- Columna para el título, descripción y botón -->
                             <div class="col-md-6">
                                 <div class="carousel-content">
                                     <h5 class="book-title">{{ book.title }}</h5>

@@ -65,9 +65,14 @@ h1 {
     color: #4a3926;
 }
 
-.logout-btn::before,
 .login-btn::before{
     content: "🔓";
+    margin-right: 5px;
+    font-size: 1.3rem;
+}
+
+.logout-btn::before{
+    content: "🔒";
     margin-right: 5px;
     font-size: 1.3rem;
 }
@@ -119,6 +124,35 @@ nav {
     display: block;
     margin: 0 auto;
 }
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+  }
+  
+  .spinner {
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
 
 @media (max-width: 768px) {
     .nav-list {

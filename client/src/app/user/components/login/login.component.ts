@@ -18,36 +18,39 @@ export class LoginComponent {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [localStorage.getItem('rememberedEmail') || '', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      rememberMe: [localStorage.getItem('rememberedEmail') ? true : false] 
     });
   }
-
+  
   onSubmit() {
     if (this.loginForm.invalid) {
       alert('Por favor, completa todos los campos correctamente.');
       return;
     }
-
-    const { email, password } = this.loginForm.value;
-
+  
+    const { email, password, rememberMe } = this.loginForm.value;
+  
+    if (rememberMe) {
+      localStorage.setItem('rememberedEmail', email); 
+    } else {
+      localStorage.removeItem('rememberedEmail'); 
+    }
+  
     this.authService.login(email, password).subscribe({
       next: (data: any) => {
-        console.log('Datos JSON recibidos:', data);
-
         if (!data.data || !data.data.accessToken) {
-          console.error('Token no recibido');
           alert('Error: no se recibió un token');
           return;
         }
-
+  
         this.authService.setToken(data.data.accessToken);
         this.router.navigate(['/books']);
       },
       error: (error) => {
-        console.error('Error en la respuesta del servidor', error);
         alert(error.error?.message || 'Error al iniciar sesión');
       }
     });
-  }
+  }  
 }
