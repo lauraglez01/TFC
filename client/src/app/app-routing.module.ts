@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'regenerate-password', component: RegeneratePasswordComponent },
   { path: 'new-password', component: NewPasswordComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'book/:bookId', component: BookComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [SectionsGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe

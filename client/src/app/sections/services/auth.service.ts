@@ -28,7 +28,7 @@ export class AuthService {
   setToken(token: string): void {
     this.token = token;
     localStorage.setItem('accessToken', token);
-    this.authState.next(true); // Actualiza el estado de autenticación
+    this.authState.next(true); 
   }
 
   getToken(): string | null {
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.isLoadingSubject.next(true); // Activa el estado de carga
+    this.isLoadingSubject.next(true);
   
     this.http.post(`${this.url}/logout`, {}, { headers: { Authorization: `Bearer ${this.getToken()}` } })
       .subscribe({
@@ -52,10 +52,10 @@ export class AuthService {
     setTimeout(() => {
       localStorage.removeItem('accessToken');
       this.token = null;
-      this.authState.next(false); // Actualiza el estado de autenticación
+      this.authState.next(false); 
       this.isLoadingSubject.next(false);
       this.router.navigate(['/home']); // Redirige a /home después de hacer logout
-    }, 500); 
+    }, 50); 
   }
 
   isAuthenticated(): boolean {

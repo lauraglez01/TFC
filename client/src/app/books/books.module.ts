@@ -5,6 +5,7 @@ import { BooksListComponent } from './components/books-list/books-list.component
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { provideHttpClient } from '@angular/common/http';
 import { Book } from './interfaces/book.interface';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import { Book } from './interfaces/book.interface';
     provideHttpClient()
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     MainPageComponent,

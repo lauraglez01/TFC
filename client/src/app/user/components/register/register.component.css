@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     text-align: center;
     flex-direction: column;
@@ -18,11 +18,13 @@
     text-align: center;
   }
   
-  h2 {
-    color: #4a3926;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
+h2 {
+  font-family: 'Dongle', sans-serif;
+  color: #4a3926;
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 1rem 0 1rem 0;
+}
   
   label {
     font-size: 1rem;

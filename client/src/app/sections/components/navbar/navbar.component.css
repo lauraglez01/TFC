@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Dongle', sans-serif;
     background-color: #f4f1eb;
     margin: 0;
     padding: 0;
@@ -15,7 +15,7 @@ header {
     position: relative;
     text-align: center;
     background-color: #fff5e1;
-    padding: 2rem;
+    padding: 1.5rem;
     width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-bottom: 2px solid #d1a15c;
@@ -26,16 +26,16 @@ header {
 }
 
 h1 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Dongle', sans-serif;
     font-size: 4rem;
     color: #4a3926;
     margin: 0;
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-family: 'Dongle', sans-serif;
+    font-size: 2rem;
     color: #8d6748;
-    font-style: italic;
     margin-top: 0.5rem;
     font-weight: 500;
 }
@@ -124,35 +124,6 @@ nav {
     display: block;
     margin: 0 auto;
 }
-
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 9999;
-  }
-  
-  .spinner {
-    border: 6px solid rgba(255, 255, 255, 0.3);
-    border-top: 6px solid #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
 
 @media (max-width: 768px) {
     .nav-list {
