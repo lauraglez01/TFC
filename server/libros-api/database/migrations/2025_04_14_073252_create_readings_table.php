@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('readings', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('author');
-            $table->string('country');
-            $table->text('description');
-            $table->integer(column: 'published_year');
-            $table->string('isbn');
-            $table->string('cover');
+            $table->integer('user_id');
+            $table->integer('book_id');
+            $table->enum('status', ['Reading', 'Planned', 'On Hold', 'Dropped', 'Completed', 'Rereading']);
+            $table->date('started_at')->nullable();
+            $table->date('finished_at')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('readings');
     }
 };

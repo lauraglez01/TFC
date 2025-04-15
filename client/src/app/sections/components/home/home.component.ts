@@ -6,12 +6,14 @@ import { BookService } from '../../../books/services/book.service';
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   public allBooks: Book[] = [];
   public recommendedBooks: Book[] = [];
   public filteredBooks: Book[] = [];
+  public categories: string[] = [];
+  public selectedCategories: Set<string> = new Set();
   public isLoading: boolean = true;
 
   constructor(private bookService: BookService) {}
@@ -21,7 +23,13 @@ export class HomeComponent implements OnInit {
       this.allBooks = books;
 
       this.recommendedBooks = this.getRecommendedBooks(books, 3);
-      this.filteredBooks = books.filter(book => !this.recommendedBooks.includes(book));
+      this.filteredBooks = books.filter(
+        (book) => !this.recommendedBooks.includes(book)
+      );
+
+      this.categories = Array.from(
+        new Set(books.flatMap((book) => book.categories.map((cat) => cat.name)))
+      ).sort();
 
       this.isLoading = false;
     });
@@ -34,16 +42,25 @@ export class HomeComponent implements OnInit {
 
   filterBooks(query: string): void {
     const searchQuery = query.toLowerCase().trim();
+  
     this.filteredBooks = this.allBooks
-      .filter(book => !this.recommendedBooks.includes(book)) 
+      .filter((book) => !this.recommendedBooks.includes(book))
       .filter((book: Book) => {
-        return (
+        const matchesSearch =
           book.title.toLowerCase().includes(searchQuery) ||
           book.author.toLowerCase().includes(searchQuery) ||
-          book.description.toLowerCase().includes(searchQuery)
-        );
+          book.description.toLowerCase().includes(searchQuery);
+  
+          const matchesCategory =
+          Array.from(this.selectedCategories).every(selected =>
+            book.categories.some(cat => cat.name === selected)
+          );
+        
+  
+        return matchesSearch && matchesCategory;
       });
   }
+  
 
   onSearchInput(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -53,5 +70,24 @@ export class HomeComponent implements OnInit {
   clearSearch(input: HTMLInputElement): void {
     input.value = '';
     this.filterBooks('');
+  }
+
+  getShortDescription(desc: string): string {
+    return desc.length > 100 ? desc.slice(0, 100) + '...' : desc;
+  }
+
+  onCategoryChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+
+    if (input.checked) {
+      this.selectedCategories.add(value);
+    } else {
+      this.selectedCategories.delete(value);
+    }
+
+    this.filterBooks(
+      (document.querySelector('#searchInput') as HTMLInputElement)?.value || ''
+    );
   }
 }

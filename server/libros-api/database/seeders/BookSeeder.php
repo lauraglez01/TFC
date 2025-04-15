@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Book;
+use App\Models\Category;
 
 class BookSeeder extends Seeder
 {
@@ -15,247 +16,196 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        Book::insert([
-            [
-                'title' => 'El Quijote',
-                'author' => 'Miguel de Cervantes',
-                'country' => 'Spain',
-                'description' => "Don Quixote, a novel by Miguel de Cervantes, tells the story of an aging knight who, inspired by chivalric romances, sets out on adventures with his squire, Sancho Panza.",
-                'published_year' => 1610,
-                'isbn' => '9788420727950',
-                'categories' => json_encode(['Classic Literature', 'Historical', 'Adventure']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1479036492i/32953496.jpg'
-            ],
-            [
-                'title' => 'One Hundred Years of Solitude',
-                'author' => 'Gabriel García Márquez',
-                'country' => 'Colombia',
-                'description' => 'The novel tells the story of the Buendía family in the fictional town of Macondo, spanning several generations, with magical realism.',
-                'published_year' => 1967,
-                'isbn' => '9780307474728',
-                'categories' => json_encode(['Magical Realism', 'Family Saga']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327881361i/320.jpg'
-            ],
-            [
-                'title' => 'The Shadow of the Wind',
-                'author' => 'Carlos Ruiz Zafón',
-                'country' => 'Spain',
-                'description' => 'A young man named Daniel discovers a book in the Cemetery of Forgotten Books, which leads him to unravel a literary mystery.',
-                'published_year' => 2001,
-                'isbn' => '9788408170716',
-                'categories' => json_encode(['Mystery', 'Thriller']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1628791882i/1232.jpg'
-            ],
-            [
-                'title' => '1984',
-                'author' => 'George Orwell',
-                'country' => 'United Kingdom',
-                'description' => 'A dystopian novel that depicts a totalitarian world where the government manipulates the truth and controls citizens’ lives.',
-                'published_year' => 1949,
-                'isbn' => '9780451524935',
-                'categories' => json_encode(['Dystopian Fiction', 'Political Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg'
-            ],
-            [
-                'title' => 'Pride and Prejudice',
-                'author' => 'Jane Austen',
-                'country' => 'United Kingdom',
-                'description' => 'A romance between Elizabeth Bennet and Mr. Darcy that explores social classes and family struggles in early 19th-century England.',
-                'published_year' => 1813,
-                'isbn' => '9780141040349',
-                'categories' => json_encode(['Romance', 'Social Criticism']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681804503i/129915654.jpg'
-            ],
-            [
-                'title' => 'The Great Gatsby',
-                'author' => 'F. Scott Fitzgerald',
-                'country' => 'United States',
-                'description' => 'The story of Jay Gatsby and his obsession with Daisy Buchanan, offering a critique of the decadence and disillusionment of American society.',
-                'published_year' => 1925,
-                'isbn' => '9780743273565',
-                'categories' => json_encode(['Classic Fiction', 'Tragedy']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1650033243i/41733839.jpg'
-            ],
-            [
-                'title' => 'Don Juan Tenorio',
-                'author' => 'José Zorrilla',
-                'country' => 'Spain',
-                'description' => 'A classic Spanish play about the legendary seducer and libertine, Don Juan, whose actions lead to his downfall.',
-                'published_year' => 1630,
-                'isbn' => '9788497324597',
-                'categories' => json_encode(['Play', 'Tragedy']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1713829575i/877693.jpg'
-            ],
-            [
-                'title' => 'The Catcher in the Rye',
-                'author' => 'J.D. Salinger',
-                'country' => 'United States',
-                'description' => 'The story of Holden Caulfield, a disenchanted teenager who rebels against the phoniness of adult society.',
-                'published_year' => 1951,
-                'isbn' => '9780316769488',
-                'categories' => json_encode(['Coming-of-Age', 'Literary Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg'
-            ],
-            [
-                'title' => 'The Brothers Karamazov',
-                'author' => 'Fyodor Dostoevsky',
-                'country' => 'Russia',
-                'description' => 'A philosophical novel about the moral and spiritual dilemmas faced by three brothers in 19th-century Russia.',
-                'published_year' => 1880,
-                'isbn' => '9780140449242',
-                'categories' => json_encode(['Philosophical Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427728126i/4934.jpg'
-            ],
-            [
-                'title' => 'Moby Dick',
-                'author' => 'Herman Melville',
-                'country' => 'United States',
-                'description' => 'A sailor named Ishmael recounts his experiences on the whaling ship Pequod, led by the obsessed Captain Ahab in pursuit of the elusive white whale.',
-                'published_year' => 1851,
-                'isbn' => '9780142437247',
-                'categories' => json_encode(['Adventure', 'Philosophical Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1347576219i/3209693.jpg'
-            ],
-            [
-                'title' => 'Brave New World',
-                'author' => 'Aldous Huxley',
-                'country' => 'United Kingdom',
-                'description' => 'A dystopian novel that explores a world where humanity is controlled by pleasure, technology, and social engineering.',
-                'published_year' => 1932,
-                'isbn' => '9780060850524',
-                'categories' => json_encode(['Dystopian Fiction', 'Science Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1575509280i/5129.jpg'
-            ],
-            [
-                'title' => 'Crime and Punishment',
-                'author' => 'Fyodor Dostoevsky',
-                'country' => 'Russia',
-                'description' => 'The psychological drama of a young man, Raskolnikov, who commits a murder and struggles with his conscience.',
-                'published_year' => 1866,
-                'isbn' => '9780486415871',
-                'categories' => json_encode(['Psychological Fiction', 'Crime Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1382846449i/7144.jpg'
-            ],
-            [
-                'title' => 'War and Peace',
-                'author' => 'Leo Tolstoy',
-                'country' => 'Russia',
-                'description' => 'A sweeping epic set against the backdrop of Napoleon’s invasion of Russia, following the lives of aristocratic families.',
-                'published_year' => 1869,
-                'isbn' => '9780143039990',
-                'categories' => json_encode(['Historical Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1413215930i/656.jpg'
-            ],
-            [
-                'title' => 'The Divine Comedy',
-                'author' => 'Dante Alighieri',
-                'country' => 'Italy',
-                'description' => 'A journey through Hell, Purgatory, and Paradise, exploring themes of sin, redemption, and divine justice.',
-                'published_year' => 1320,
-                'isbn' => '9780140448954',
-                'categories' => json_encode(['Poetry', 'Philosophical Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657540227i/6656.jpg'
-            ],
-            [
-                'title' => 'The Stranger',
-                'author' => 'Albert Camus',
-                'country' => 'France',
-                'description' => 'A philosophical novel about an emotionally detached man, Meursault, who faces the absurdity of life and the meaning of existence.',
-                'published_year' => 1942,
-                'isbn' => '9780679764022',
-                'categories' => json_encode(['Existential Fiction', 'Philosophical Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1738704267i/49552.jpg'
-            ],
-            [
-                'title' => 'The Alchemist',
-                'author' => 'Paulo Coelho',
-                'country' => 'Brazil',
-                'description' => 'A young shepherd named Santiago embarks on a journey to find treasure, learning life lessons about following his dreams.',
-                'published_year' => 1988,
-                'isbn' => '9780061122415',
-                'categories' => json_encode(['Philosophical Fiction', 'Adventure']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg'
-            ],
-            [
-                'title' => 'The Road',
-                'author' => 'Cormac McCarthy',
-                'country' => 'United States',
-                'description' => 'A haunting post-apocalyptic novel about a father and son’s struggle to survive in a bleak, devastated world.',
-                'published_year' => 2006,
-                'isbn' => '9780307387134',
-                'categories' => json_encode(['Post-Apocalyptic Fiction', 'Survival Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1600241424i/6288.jpg'
-            ],
-            [
-                'title' => 'The Grapes of Wrath',
-                'author' => 'John Steinbeck',
-                'country' => 'United States',
-                'description' => 'The story of the Joad family’s hardships as they travel westward during the Great Depression.',
-                'published_year' => 1939,
-                'isbn' => '9780143039433',
-                'categories' => json_encode(['Historical Fiction', 'Social Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1375670575i/18114322.jpg'
-            ],
-            [
-                'title' => 'Les Misérables',
-                'author' => 'Victor Hugo',
-                'country' => 'France',
-                'description' => 'A sprawling epic about the struggles of several characters in post-revolutionary France, focusing on themes of justice, love, and redemption.',
-                'published_year' => 1862,
-                'isbn' => '9780451419439',
-                'categories' => json_encode(['Historical Fiction', 'Social Criticism']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1509394980i/36377471.jpg'
-            ],
-            [
-                'title' => 'Fahrenheit 451',
-                'author' => 'Ray Bradbury',
-                'country' => 'United States',
-                'description' => 'A dystopian novel set in a future where books are banned and “firemen” burn any that are found.',
-                'published_year' => 1953,
-                'isbn' => '9781451673319',
-                'categories' => json_encode(['Dystopian Fiction', 'Science Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1383718290i/13079982.jpg'
-            ],
-            [
-                'title' => 'The Picture of Dorian Gray',
-                'author' => 'Oscar Wilde',
-                'country' => 'United Kingdom',
-                'description' => 'The story of a young man whose portrait ages while he remains eternally youthful, as he lives a hedonistic and morally corrupt life.',
-                'published_year' => 1890,
-                'isbn' => '9780141439570',
-                'categories' => json_encode(['Gothic Fiction', 'Philosophical Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1454087681i/489732.jpg'
-            ],
-            [
-                'title' => 'Alice\'s Adventures in Wonderland',
-                'author' => 'Lewis Carroll',
-                'country' => 'United Kingdom',
-                'description' => 'A young girl named Alice falls through a rabbit hole and encounters strange creatures in a fantastical world.',
-                'published_year' => 1865,
-                'isbn' => '9780141439761',
-                'categories' => json_encode(['Fantasy', 'Children\'s Literature']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630487234i/24213.jpg'
-            ],
-            [
-                'title' => 'Dracula',
-                'author' => 'Bram Stoker',
-                'country' => 'Ireland',
-                'description' => 'The classic Gothic novel about Count Dracula’s attempt to move to England in order to spread the undead curse.',
-                'published_year' => 1897,
-                'isbn' => '9780486411095',
-                'categories' => json_encode(['Horror', 'Gothic Fiction']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg'
-            ],
-            [
-                'title' => 'The Count of Monte Cristo',
-                'author' => 'Alexandre Dumas',
-                'country' => 'France',
-                'description' => 'A young man, Edmond Dantès, is wrongfully imprisoned, and after escaping, he seeks revenge on those who betrayed him.',
-                'published_year' => 1844,
-                'isbn' => '9780451531797',
-                'categories' => json_encode(['Adventure', 'Revenge']),
-                'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1724863997i/7126.jpg'
-            ]
+        $this->createBook(
+            'Don Quixote',
+            'Miguel de Cervantes',
+            'Spain',
+            "Don Quixote has become so entranced by reading chivalric romances that he determines to become a knight-errant himself. In the company of his faithful squire, Sancho Panza, his exploits blossom in all sorts of wonderful ways. While Quixote's fancy often leads him astray—he tilts at windmills, imagining them to be giants—Sancho acquires cunning and a certain sagacity. Sane madman and wise fool, they roam the world together, and together they have haunted readers' imaginations for nearly four hundred years.",
+            1610,
+            '9788420727950',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1479036492i/32953496.jpg',
+            ['History', 'Adventure']
+        );
+
+        $this->createBook(
+            '1984',
+            'George Orwell',
+            'UK',
+            "A masterpiece of rebellion and imprisonment where war is peace freedom is slavery and Big Brother is watching. Thought Police, Big Brother, Orwellian - these words have entered our vocabulary because of George Orwell's classic dystopian novel 1984. The story of one man's Nightmare Odyssey as he pursues a forbidden love affair through a world ruled by warring states and a power structure that controls not only information but also individual thought and memory 1984 is a prophetic haunting tale More relevant than ever before 1984 exposes the worst crimes imaginable the destruction of truth freedom and individuality. With a foreword by Thomas Pynchon. This beautiful paperback edition features deckled edges and french flaps a perfect gift for any occasion.",
+            1949,
+            '9780451524935',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg',
+            ['Science', 'Thriller']
+        );
+
+        $this->createBook(
+            'Pride and Prejudice',
+            'Jane Austen',
+            'UK',
+            "Pride and Prejudice has charmed generations of readers for more than two centuries. Jane Austen's much-adapted novel is famed for its witty, spirited heroine, sensational romances, and deft remarks on the triumphs and pitfalls of social convention. Author Jane Austen (1775-1817) was an English novelist whose works of social realism achieved unprecedented critical and popular success, though Austen herself remained an anonymous writer throughout her life.",
+            1813,
+            '9780141040349',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681804503i/129915654.jpg',
+            ['Romance']
+        );
+
+        $this->createBook(
+            'The Great Gatsby',
+            'F. Scott Fitzgerald',
+            'USA',
+            "The Great Gatsby, F. Scott Fitzgerald’s third book, stands as the supreme achievement of his career. First published in 1925, this quintessential novel of the Jazz Age has been acclaimed by generations of readers. The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted “gin was the national drink and sex the national obsession,” it is an exquisitely crafted tale of America in the 1920s.",
+            1925,
+            '9780743273565',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1650033243i/41733839.jpg',
+            ['Fiction', 'History']
+        );
+
+        $this->createBook(
+            'The Catcher in the Rye',
+            'J.D. Salinger',
+            'USA',
+            "Fleeing the crooks at Pencey Prep, he pinballs around New York City seeking solace in fleeting encounters—shooting the bull with strangers in dive hotels, wandering alone round Central Park, getting beaten up by pimps and cut down by erstwhile girlfriends. The city is beautiful and terrible, in all its neon loneliness and seedy glamour, its mingled sense of possibility and emptiness. Holden passes through it like a ghost, thinking always of his kid sister Phoebe, the only person who really understands him, and his determination to escape the phonies and find a life of true meaning.",
+            1951,
+            '9780316769488',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg',
+            ['Romance', 'Mystery']
+        );
+
+        $this->createBook(
+            'The Brothers Karamazov',
+            'Fyodor Dostoevsky',
+            'Russia',
+            "The Brothers Karamazov is a murder mystery, a courtroom drama, and an exploration of erotic rivalry in a series of triangular love affairs involving the “wicked and sentimental” Fyodor Pavlovich Karamazov and his three sons―the impulsive and sensual Dmitri; the coldly rational Ivan; and the healthy, red-cheeked young novice Alyosha. Through the gripping events of their story, Dostoevsky portrays the whole of Russian life, is social and spiritual striving, in what was both the golden age and a tragic turning point in Russian culture.",
+            1880,
+            '9780140449242',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427728126i/4934.jpg',
+            ['History', 'Thriller']
+        );
+
+        $this->createBook(
+            'War and Peace',
+            'Leo Tolstoy',
+            'Russia',
+            "War and Peace broadly focuses on Napoleon’s invasion of Russia in 1812 and follows three of the most well-known characters in literature: Pierre Bezukhov, the illegitimate son of a count who is fighting for his inheritance and yearning for spiritual fulfillment; Prince Andrei Bolkonsky, who leaves his family behind to fight in the war against Napoleon; and Natasha Rostov, the beautiful young daughter of a nobleman who intrigues both men.",
+            1869,
+            '9780143039990',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1413215930i/656.jpg',
+            ['History']
+        );
+
+        $this->createBook(
+            'The Alchemist',
+            'Paulo Coelho',
+            'Brazil',
+            "Paulo Coelho's masterpiece tells the mystical story of Santiago, an Andalusian shepherd boy who yearns to travel in search of a worldly treasure. His quest will lead him to riches far different—and far more satisfying—than he ever imagined. Santiago's journey teaches us about the essential wisdom of listening to our hearts, recognizing opportunity and learning to read the omens strewn along life's path, and, most importantly, following our dreams.",
+            1988,
+            '9780061122415',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg',
+            ['Fantasy']
+        );
+
+        $this->createBook(
+            'The Road',
+            'Cormac McCarthy',
+            'USA',
+            "A father and his son walk alone through burned America. Nothing moves in the ravaged landscape save the ash on the wind. It is cold enough to crack stones, and when the snow falls it is gray. The sky is dark. Their destination is the coast, although they don’t know what, if anything, awaits them there. They have nothing; just a pistol to defend themselves against the lawless bands that stalk the road, the clothes they are wearing, a cart of scavenged food—and each other.",
+            2006,
+            '9780307387134',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1600241424i/6288.jpg',
+            ['Science', 'Thriller']
+        );
+
+        $this->createBook(
+            'The Grapes of Wrath',
+            'John Steinbeck',
+            'USA',
+            "First published in 1939, Steinbeck’s Pulitzer Prize-winning epic of the Great Depression chronicles the Dust Bowl migration of the 1930s and tells the story of one Oklahoma farm family, the Joads—driven from their homestead and forced to travel west to the promised land of California. Out of their trials and their repeated collisions against the hard realities of an America divided into Haves and Have-Nots evolves a drama that is intensely human yet majestic in its scale and moral vision, elemental yet plainspoken, tragic but ultimately stirring in its human dignity. A portrait of the conflict between the powerful and the powerless, of one man’s fierce reaction to injustice, and of one woman’s stoical strength, the novel captures the horrors of the Great Depression and probes into the very nature of equality and justice in America. At once a naturalistic epic, captivity narrative, road novel, and transcendental gospel, Steinbeck’s powerful landmark novel is perhaps the most American of American Classics.",
+            1939,
+            '9780143039433',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1375670575i/18114322.jpg',
+            ['History']
+        );
+
+        $this->createBook(
+            'Les Misérables',
+            'Victor Hugo',
+            'France',
+            "Victor Hugo's tale of injustice, heroism and love follows the fortunes of Jean Valjean, an escaped convict determined to put his criminal past behind him. But his attempts to become a respected member of the community are constantly put under threat: by his own conscience, when, owing to a case of mistaken identity, another man is arrested in his place; and by the relentless investigations of the dogged Inspector Javert. It is not simply for himself that Valjean must stay free, however, for he has sworn to protect the baby daughter of Fantine, driven to prostitution by poverty.",
+            1862,
+            '9780451419439',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1509394980i/36377471.jpg',
+            ['Romance', 'History']
+        );
+
+        $this->createBook(
+            'Fahrenheit 451',
+            'Ray Bradbury',
+            'USA',
+            "Fahrenheit 451 is a fictional novel written by American writer Ray Douglas Bradbury in the genre of psychological and drama. The work takes its name from the unit of temperature in physics. Thus, 451 Fahrenheit is needed for ordinary paper to ignite. The events in the work take place in America, which is experiencing a period of transition. The work, which tells the story of people whose books and houses are burned, was published in 1953. Fahrenheit 451: A time interval in the America of the future, where the duty of firefighters is not to extinguish, but to burn books... The hero of our work - Guy Montag is also one of those firefighters. Guy, who always does his job with enthusiasm and love, meets a 17-year-old girl named Clairese on the road one day. After the dialogue between them and Clairese, Guy has already begun to question everything inside. His job, his wife Mildred, and his boss Beatty. Why are they burning books?",
+            1953,
+            '9781451673319',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1383718290i/13079982.jpg',
+            ['Science', 'Fiction']
+        );
+
+        $this->createBook(
+            'The Picture of Dorian Gray',
+            'Oscar Wilde',
+            'UK',
+            "Enthralled by his own exquisite portrait, Dorian Gray exchanges his soul for eternal youth and beauty. Influenced by his friend Lord Henry Wotton, he is drawn into a corrupt double life, indulging his desires in secret while remaining a gentleman in the eyes of polite society. Only his portrait bears the traces of his decadence. The Picture of Dorian Gray was a succès de scandale. Early readers were shocked by its hints at unspeakable sins, and the book was later used as evidence against Wilde at the Old Bailey in 1895.",
+            1890,
+            '9780141439570',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1454087681i/489732.jpg',
+            ['Mystery', 'Thriller']
+        );
+
+        $this->createBook(
+            'Alice\'s Adventures in Wonderland',
+            'Lewis Carroll',
+            'UK',
+            "When Alice sees a white rabbit take a watch out of its waistcoat pocket she decides to follow it, and a sequence of most unusual events is set in motion. This mini book contains the entire topsy-turvy stories of Alice's Adventures in Wonderland and Through the Looking-Glass, accompanied by practical notes and Martina Pelouso's memorable full-colour illustrations.",
+            1865,
+            '9780141439761',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1630487234i/24213.jpg',
+            ['Fantasy']
+        );
+
+        $this->createBook(
+            'Dracula',
+            'Bram Stoker',
+            'Ireland',
+            "When Jonathan Harker visits Transylvania to help Count Dracula with the purchase of a London house, he makes a series of horrific discoveries about his client. Soon afterwards, various bizarre incidents unfold in England: an apparently unmanned ship is wrecked off the coast of Whitby; a young woman discovers strange puncture marks on her neck; and the inmate of a lunatic asylum raves about the 'Master' and his imminent arrival.",
+            1897,
+            '9780486411095',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387151694i/17245.jpg',
+            ['Mystery', 'Thriller']
+        );
+
+        $this->createBook(
+            'The Count of Monte Cristo',
+            'Alexandre Dumas',
+            'France',
+            "Thrown in prison for a crime he has not committed, Edmond Dantès is confined to the grim fortress of If. There he learns of a great hoard of treasure hidden on the Isle of Monte Cristo and he becomes determined not only to escape, but also to use the treasure to plot the destruction of the three men responsible for his incarceration. Dumas’ epic tale of suffering and retribution, inspired by a real-life case of wrongful imprisonment, was a huge popular success when it was first serialized in the 1840s.",
+            1844,
+            '9780451531797',
+            'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1724863997i/7126.jpg',
+            ['Thriller', 'History']
+        );
+    }
+
+    private function createBook($title, $author, $country, $description, $year, $isbn, $cover, $categoryNames)
+    {
+        $book = Book::create([
+            'title' => $title,
+            'author' => $author,
+            'country' => $country,
+            'description' => $description,
+            'published_year' => $year,
+            'isbn' => $isbn,
+            'cover' => $cover
         ]);
+
+        $categories = Category::whereIn('name', $categoryNames)->pluck('id');
+        $book->categories()->attach($categories);
     }
 }

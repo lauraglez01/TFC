@@ -14,8 +14,8 @@
         <p><strong>Description:</strong></p>
         <p class="description">{{ bookDetails.description }}</p>
 
-        <p><strong>Category:</strong></p>
-        <p class="category">{{ bookDetails.categories.join(', ') }}</p>
+        <p><strong>Categories:</strong></p>
+        <p class="category">{{ getCategoryNames() }}</p>
       </div>
 
       <div class="dropdown status-dropdown">

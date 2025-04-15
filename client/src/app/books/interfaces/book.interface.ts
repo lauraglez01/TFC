@@ -5,7 +5,11 @@ export interface Book {
     country: string;
     description: string;
     published_year: number;
-    categories: string[];
+    categories: Category[];
     isbn: string;
     cover: string;
 }  
+export interface Category {
+    id: number;
+    name: string;
+}

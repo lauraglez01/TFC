@@ -46,4 +46,10 @@ export class BookComponent implements OnInit {
     this.selectedStatus = status;
     console.log(`Book status set to: ${status}`);
   }
+
+  getCategoryNames(): string {
+    if (!this.bookDetails || !this.bookDetails.categories) return '';
+    return this.bookDetails.categories.map(cat => cat.name).join(', ');
+  }
+  
 }

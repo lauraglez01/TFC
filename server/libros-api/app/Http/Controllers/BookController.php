@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::with('categories')->get();
         return response()->json(['books' => $books], 200);
     }
 

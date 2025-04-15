@@ -1,39 +1,43 @@
 <?php
 
-use App\Http\Controllers\BookController;
-use App\Models\Book;
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
+use App\Models\Book;
 
 /*
-|----------------------------------------------------------------------
+|--------------------------------------------------------------------------
 | API Routes
-|----------------------------------------------------------------------
+|--------------------------------------------------------------------------
 */
 
+// Obtener usuario autenticado
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Authenticated routes - logout
+// Logout (requiere autenticación)
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
-// Book routes
-Route::get('/books', function () {
-    $categories = request('categories');
+// Obtener libros (todos o filtrados por categoría)
+Route::get('/books', function (Request $request) {
+    $query = Book::with('categories');
 
-    if ($categories) {
-        $categoriesArray = explode(',', $categories);
-        return response()->json(Book::whereJsonContains('categories', $categoriesArray)->get());
+    if ($request->has('category_id')) {
+        $query->whereHas('categories', function ($q) use ($request) {
+            $q->where('id', $request->category_id);
+        });
     }
 
-    return response()->json(Book::all());
+    return response()->json($query->get());
 });
 
-// Authentication routes
+// Autenticación
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+// Recuperación de contraseña
 Route::post('/regenerate/code', [AuthController::class, 'regenerateCode']);
 Route::post('/regenerate/password', [AuthController::class, 'regeneratePassword']);

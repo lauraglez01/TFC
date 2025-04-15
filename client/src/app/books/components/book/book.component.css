@@ -48,6 +48,10 @@ h2 {
   max-width: 90%;
 }
 
+.description {
+  text-align: justify;
+}
+
 .description, .category {
   color: #4a3926;
   margin-bottom: 1rem;

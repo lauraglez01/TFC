@@ -233,6 +233,31 @@
     filter: sepia(50%);
 }
 
+.category-btn {
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: #fff5e6;
+    color: #8d6748;
+    border: 2px solid #8d6748;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .category-btn:hover {
+    background-color: #f5e0c3;
+    color: #a97d5d;
+    border-color: #a97d5d;
+  }
+  
+  .category-btn.active {
+    background-color: #8d6748;
+    color: #fff;
+    border-color: #8d6748;
+  }
 
 /* Responsive */
 @media (max-width: 767px) {

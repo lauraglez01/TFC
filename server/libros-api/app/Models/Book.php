@@ -12,9 +12,12 @@ class Book extends Model
 
     protected $table = 'books';
 
-    protected $fillable = ['title','author', 'country', 'description', 'published_year', 'categories', 'isbn', 'cover'];
+    protected $fillable = ['title', 'author', 'country', 'description', 'published_year', 'isbn', 'cover'];
+    protected $hidden = ['created_at', 'updated_at'];
 
-    protected $casts = [
-        'categories' => 'array', 
-    ];
+    // Book.php
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'book_categories');
+    }
 }

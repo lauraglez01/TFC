@@ -30,7 +30,9 @@ export class MainPageComponent implements OnInit {
       this.books = [...this.allBooks];
     } else {
       // Filtra los libros que contienen la categoría seleccionada
-      this.books = this.allBooks.filter(book => book.categories.includes(selectedCategory));
-    }
+      this.books = this.allBooks.filter(book =>
+        book.categories.some(category => category.name === selectedCategory)
+      );
+          }
   }
 }
