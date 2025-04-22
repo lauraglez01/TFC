@@ -1,38 +1,39 @@
 @if (isLoading) {
-  <div class="loading-overlay">
-    <div class="cookie-spinner"></div>
-    <p class="loading-text">Loading... Grab a cookie while you wait!</p>
-  </div>
+<div class="loading-overlay">
+  <div class="cookie-spinner"></div>
+  <p class="loading-text">Loading... Grab a cookie while you wait!</p>
+</div>
 } @else if (bookDetails) {
-  <div class="book-details-container">
-    <div class="book-details">
-      <img [src]="bookDetails.cover" [alt]="bookDetails.title" class="book-cover" />
-      <h1>{{ bookDetails.title }}</h1>
-      <h2>By {{ bookDetails.author }}</h2>
+<div class="book-details-container">
+  <div class="book-details">
+    <img [src]="bookDetails.cover" [alt]="bookDetails.title" class="book-cover" />
+    <h1>{{ bookDetails.title }}</h1>
+    <h2>By {{ bookDetails.author }}</h2>
 
-      <div class="book-meta">
-        <p><strong>Description:</strong></p>
-        <p class="description">{{ bookDetails.description }}</p>
+    <div class="book-meta">
+      <p><strong>Description:</strong></p>
+      <p class="description">{{ bookDetails.description }}</p>
 
-        <p><strong>Categories:</strong></p>
-        <p class="category">{{ getCategoryNames() }}</p>
-      </div>
-
-      <div class="dropdown status-dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          {{ selectedStatus || 'Select status' }}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-          <li><a class="dropdown-item" (click)="setStatus('Reading')">📖 Reading</a></li>
-          <li><a class="dropdown-item" (click)="setStatus('Plan to Read')">📝 Plan to Read</a></li>
-          <li><a class="dropdown-item" (click)="setStatus('On Hold')">⏸️ On Hold</a></li>
-          <li><a class="dropdown-item" (click)="setStatus('Dropped')">❌ Dropped</a></li>
-          <li><a class="dropdown-item" (click)="setStatus('Completed')">✅ Completed</a></li>
-          <li><a class="dropdown-item" (click)="setStatus('Rereading')">🔁 Rereading</a></li>
-        </ul>
-      </div>
-
-      <button class="btn back-btn" [routerLink]="['/home']">← Back to Home</button>
+      <p><strong>Categories:</strong></p>
+      <p class="category">{{ getCategoryNames() }}</p>
     </div>
+
+    <div class="dropdown status-dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="statusDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        {{ selectedStatus || 'Select status' }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="statusDropdown">
+        <li><a class="dropdown-item" (click)="setStatus('Reading')">📖 Reading</a></li>
+        <li><a class="dropdown-item" (click)="setStatus('Planned')">📝 Planned</a></li>
+        <li><a class="dropdown-item" (click)="setStatus('On Hold')">⏸️ On Hold</a></li>
+        <li><a class="dropdown-item" (click)="setStatus('Dropped')">❌ Dropped</a></li>
+        <li><a class="dropdown-item" (click)="setStatus('Completed')">✅ Completed</a></li>
+        <li><a class="dropdown-item" (click)="setStatus('Rereading')">🔁 Rereading</a></li>
+      </ul>
+    </div>
+
+    <button class="btn back-btn" [routerLink]="['/home']">← Back to Home</button>
   </div>
+</div>
 }

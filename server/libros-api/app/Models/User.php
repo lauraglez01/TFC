@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Reading;
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,4 +43,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function readings()
+    {
+        return $this->hasMany(Reading::class);
+    }
+
+    /**
+     * @method string getBookStatus(int $bookId) Devuelve el estado del libro para el usuario
+     */
+    public function getBookStatus($bookId)
+    {
+        $reading = $this->readings()->where('book_id', $bookId)->first();
+        return $reading?->status ?? 'not started';
+    }
 }

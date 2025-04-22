@@ -6,6 +6,8 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
 use App\Models\Book;
+use Illuminate\Support\Facades\Response;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Logout (requiere autenticación)
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+
+Route::middleware('auth:sanctum')->get('/user/readings', function (Request $request) {
+    return Response::json(
+        $request->user()->readings()->with('book.categories')->get()
+    );
+});
+
+
+Route::middleware('auth:sanctum')->post('/book/{id}/status', [BookController::class, 'updateStatus']);
 
 // Obtener libros (todos o filtrados por categoría)
 Route::get('/books', function (Request $request) {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\User;
+use App\Models\Reading;
 
 class BookController extends Controller
 {
@@ -37,7 +39,33 @@ class BookController extends Controller
      */
     public function show($id)
     {
+        $book = Book::with('categories')->findOrFail($id);
+        return response()->json(['book' => $book], 200);
     }
+    
+
+    // BookController.php
+
+public function updateStatus(Request $request, $id)
+{
+    $book = Book::findOrFail($id);
+    $status = $request->input('status');
+
+    $reading = $request->user()->readings()->where('book_id', $id)->first();
+
+    if ($reading) {
+        $reading->status = $status;
+        $reading->save();
+    } else {
+        $request->user()->readings()->create([
+            'book_id' => $id,
+            'status' => $status,
+        ]);
+    }
+
+    return response()->json(['message' => 'Book status updated successfully']);
+}
+
 
     /**
      * Update the specified resource in storage.
