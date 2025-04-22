@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Reading;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -40,9 +41,15 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::with('categories')->findOrFail($id);
-        return response()->json(['book' => $book], 200);
-    }
     
+        $status = Auth::userser()->getBookStatus($id);
+    
+        // Devolvemos ambos en el JSON
+        return response()->json([
+            'book'   => $book,
+            'status' => $status,
+        ], 200);
+    }
 
     // BookController.php
 

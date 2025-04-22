@@ -20,6 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:sanctum')
+     ->get('/book/{id}', [BookController::class, 'show']);
+
+
 // Logout (requiere autenticación)
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 

@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { BooksModule } from '../books/books.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NavbarComponent,
     MainPageComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   exports: [
     MainPageComponent,
     NavbarComponent,
+    FooterComponent
   ]
 })
 export class SectionsModule { }

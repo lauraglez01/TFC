@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   public categories: string[] = [];
   public selectedCategories: Set<string> = new Set();
   public isLoading: boolean = true;
+  private searchQuery: string = ''; // para mantener el estado de búsqueda
 
   constructor(private bookService: BookService) {}
 
@@ -23,9 +24,7 @@ export class HomeComponent implements OnInit {
       this.allBooks = books;
 
       this.recommendedBooks = this.getRecommendedBooks(books, 3);
-      this.filteredBooks = books.filter(
-        (book) => !this.recommendedBooks.includes(book)
-      );
+      this.filteredBooks = []; // ← NO mostrar nada inicialmente
 
       this.categories = Array.from(
         new Set(books.flatMap((book) => book.categories.map((cat) => cat.name)))
@@ -40,40 +39,53 @@ export class HomeComponent implements OnInit {
     return random.slice(0, count);
   }
 
-  filterBooks(query: string): void {
-    const searchQuery = query.toLowerCase().trim();
-  
-    this.filteredBooks = this.allBooks
-      .filter((book) => !this.recommendedBooks.includes(book))
-      .filter((book: Book) => {
-        const matchesSearch =
-          book.title.toLowerCase().includes(searchQuery) ||
-          book.author.toLowerCase().includes(searchQuery) ||
-          book.description.toLowerCase().includes(searchQuery);
-  
-          const matchesCategory =
-          Array.from(this.selectedCategories).every(selected =>
-            book.categories.some(cat => cat.name === selected)
-          );
-        
-  
-        return matchesSearch && matchesCategory;
-      });
+  filterBooks(): void {
+    const hasSearch = this.searchQuery.trim().length > 0;
+    const hasCategories = this.selectedCategories.size > 0;
+
+    if (!hasSearch && !hasCategories) {
+      this.filteredBooks = [];
+      return;
+    }
+
+    const query = this.searchQuery.toLowerCase().trim();
+
+    this.filteredBooks = this.allBooks.filter((book: Book) => {
+      const matchesSearch =
+        query.length === 0 ||
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query) ||
+        book.description.toLowerCase().includes(query);
+
+      const matchesCategory =
+        this.selectedCategories.size === 0 ||
+        Array.from(this.selectedCategories).every(selected =>
+          book.categories.some(cat => cat.name === selected)
+        );
+
+      const shouldInclude = matchesSearch && matchesCategory;
+
+      console.log(`Book: ${book.title}`);
+      console.log({ hasSearch, query, matchesSearch });
+      console.log({ hasCategories, selectedCategories: Array.from(this.selectedCategories), matchesCategory });
+      console.log({ shouldInclude });
+      console.log('---');
+
+      return shouldInclude;
+    });
   }
-  
 
   onSearchInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    this.filterBooks(input.value);
+    this.searchQuery = input.value;
+    console.log('Search input:', this.searchQuery);
+    this.filterBooks();
   }
 
   clearSearch(input: HTMLInputElement): void {
     input.value = '';
-    this.filterBooks('');
-  }
-
-  getShortDescription(desc: string): string {
-    return desc.length > 100 ? desc.slice(0, 100) + '...' : desc;
+    this.searchQuery = '';
+    this.filterBooks();
   }
 
   onCategoryChange(event: Event): void {
@@ -86,8 +98,10 @@ export class HomeComponent implements OnInit {
       this.selectedCategories.delete(value);
     }
 
-    this.filterBooks(
-      (document.querySelector('#searchInput') as HTMLInputElement)?.value || ''
-    );
+    this.filterBooks();
+  }
+
+  getShortDescription(desc: string): string {
+    return desc.length > 100 ? desc.slice(0, 100) + '...' : desc;
   }
 }

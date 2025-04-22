@@ -49,9 +49,12 @@ class User extends Authenticatable
     }
 
     /**
-     * @method string getBookStatus(int $bookId) Devuelve el estado del libro para el usuario
+     * Devuelve el estado de lectura que el usuario actual tiene para un libro dado.
+     *
+     * @param  int    $bookId  ID del libro
+     * @return string          El estado ('Reading', 'Completed', etc.) o 'not started' si no hay lectura
      */
-    public function getBookStatus($bookId)
+    public function getBookStatus(int $bookId): string
     {
         $reading = $this->readings()->where('book_id', $bookId)->first();
         return $reading?->status ?? 'not started';

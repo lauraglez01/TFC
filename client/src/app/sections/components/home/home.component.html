@@ -5,14 +5,19 @@
         <div class="carousel-wrapper">
             <!-- Barra de búsqueda -->
             <div class="common-box search-bar mb-4 d-flex align-items-center gap-2">
-                <input #searchInput type="text" class="form-control" placeholder="Search for a book..."
-                    (input)="onSearchInput($event)" />
+                <input
+                  #searchInput
+                  type="text"
+                  class="form-control"
+                  placeholder="Search for a book..."
+                  (input)="onSearchInput($event)"
+                />
                 @if (searchInput.value) {
-                <button class="btn btn-outline-secondary" (click)="clearSearch(searchInput)">
+                  <button class="btn btn-outline-secondary" (click)="clearSearch(searchInput)">
                     &times;
-                </button>
+                  </button>
                 }
-            </div>
+              </div>
 
             <!-- Carrusel de libros recomendados -->
             <div id="carouselRec" class="carousel slide common-box" data-bs-ride="carousel">
@@ -75,8 +80,8 @@
               
 
             <!-- Tarjetas de libros recomendados -->
-            @if (selectedCategories.size > 0) {
-            <div class="book-cards mt-5">
+            @if (filteredBooks.length > 0) {
+                <div class="book-cards mt-5">
                 <div class="row">
                     @for (book of filteredBooks; track book.id) {
                     <div class="col-md-4 mb-4">
@@ -94,10 +99,10 @@
                 </div>
             </div>
             } @else {
-            <div class="text-center text-muted mt-5">
-                <p>Please select at least one category to see books.</p>
-            </div>
-            }
+                <div class="text-center text-muted mt-5">
+                    <p>Please select at least one category or enter a search term to see books!</p>
+                </div>
+              }
         </div>
     </div>
 </section>
