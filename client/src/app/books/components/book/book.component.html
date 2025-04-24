@@ -34,16 +34,16 @@
     </div>
 
     @if (bookDetails) {
-      @let bookId = bookDetails.id;
-      <reviews-components-review-list [bookId]="bookId"></reviews-components-review-list>
+    @let bookId = bookDetails.id;
+    <reviews-components-review-list [bookId]="bookId"></reviews-components-review-list>
     }
 
     @if(isAuthenticated){
-      <ng-container>
-        <reviews-components-review-form [bookId]="bookDetails.id"></reviews-components-review-form>
-      </ng-container>
+    <ng-container>
+      <reviews-components-review-form [bookId]="bookDetails.id"></reviews-components-review-form>
+    </ng-container>
     }
-    
+
     <button class="btn back-btn" [routerLink]="['/home']">← Back to Home</button>
   </div>
 </div>

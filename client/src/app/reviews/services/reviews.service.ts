@@ -7,7 +7,7 @@ import { AuthService } from '../../sections/services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class ReviewsService {
-  private baseUrl = 'http://localhost/api'; // base URL sin /reviews directamente
+  private baseUrl = 'http://localhost/api';
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
@@ -23,7 +23,7 @@ export class ReviewsService {
       ? new HttpHeaders({ Authorization: `Bearer ${this.auth.getToken()}` })
       : undefined;
     return this.http.post<Review>(
-      `${this.baseUrl}/books/${bookId}/reviews`, // ✅ endpoint correcto
+      `${this.baseUrl}/books/${bookId}/reviews`, 
       payload,
       { headers }
     );

@@ -1,13 +1,14 @@
 <div class="review-list container mt-4">
     <br>
-    <!-- Carga -->
     @if(loading) {
       <div class="text-center my-3">Loading reviews...</div>
     } @else {
+
       <!-- Sin reseñas -->
       @if(reviews.length === 0) {
         <div class="text-center my-3">No reviews yet. Feel free to leave your opinion!</div>
       } @else {
+
         <!-- Lista de reseñas -->
         <ul class="list-unstyled row gx-3 gy-4">
           @for(review of reviews; track review.id; let i = $index) {
@@ -23,7 +24,7 @@
                   <strong>{{ review.user.name }}</strong>
                 </p>
   
-                <!-- Galletas de valoración -->
+                <!-- Galletas para el rating -->
                 <div class="mb-2 fs-5">
                   @for(cookie of [1,2,3,4,5]; track cookie) {
                     <span [class.text-muted]="review.rating < cookie">🍪</span>

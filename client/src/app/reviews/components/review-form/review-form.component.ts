@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ReviewsService } from '../../services/reviews.service';
 import { AuthService } from '../../../sections/services/auth.service';
-import { BookService } from '../../../books/services/book.service';  // Importar el servicio de libros
+import { BookService } from '../../../books/services/book.service';
 
 @Component({
   selector: 'reviews-components-review-form',
@@ -15,23 +15,23 @@ export class ReviewFormComponent {
   comment: string = '';
   loading = false;
   isAuthenticated = false;
-  successMessage: string = '';  // Mensaje de éxito
+  successMessage: string = ''; 
 
   constructor(
     private reviewsService: ReviewsService,
     private authService: AuthService,
-    private bookService: BookService  // Usamos el servicio de libros
+    private bookService: BookService  
   ) {
     this.isAuthenticated = this.authService.isAuthenticated();
   }
 
   submitReview(): void {
     if (!this.isAuthenticated) {
-      this.successMessage = 'Debes iniciar sesión para dejar una reseña.';
+      this.successMessage = 'You need to log in to leave a review.';
       return;
     }
     if (this.rating === null) {
-      this.successMessage = 'Por favor, selecciona tu valoración.';
+      this.successMessage = 'Please, select your rating.';
       return;
     }
 
@@ -41,19 +41,15 @@ export class ReviewFormComponent {
       comment: this.comment.trim()
     }).subscribe({
       next: () => {
-        this.successMessage = 'Reseña enviada con éxito!';
         this.rating = null;
         this.comment = '';
 
-        // Ahora recargamos las reseñas
-        this.bookService.getReviewsByBook(this.bookId).subscribe((reviews) => {
-          this.bookService.updateReviews(this.bookId, reviews); // Actualizamos las reseñas
-        });
+        window.location.reload();
 
         this.loading = false;
       },
       error: () => {
-        this.successMessage = 'Error al enviar la reseña.';
+        this.successMessage = 'Error sending the review.';
         this.loading = false;
       }
     });

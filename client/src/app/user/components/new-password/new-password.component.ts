@@ -40,7 +40,7 @@ export class NewPasswordComponent {
 
     this.userService.resetPassword({ email, token: codigo, password: nuevaPassword, password_confirmation: confirmacionPassword })
       .subscribe({
-        next: (response) => {
+        next: () => {
           alert('Contraseña restablecida con éxito.');
           this.router.navigate(['/login']);
         },

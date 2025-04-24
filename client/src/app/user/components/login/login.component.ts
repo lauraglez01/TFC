@@ -40,9 +40,9 @@ export class LoginComponent {
     const { email, password, rememberMe } = this.loginForm.value;
   
     if (rememberMe) {
-      localStorage.setItem('rememberedEmail', email); // Guarda el email si "Remember me" está seleccionado
+      localStorage.setItem('rememberedEmail', email); 
     } else {
-      localStorage.removeItem('rememberedEmail'); // Elimina el email si "Remember me" no está seleccionado
+      localStorage.removeItem('rememberedEmail');
     }
   
     this.authService.login(email, password).subscribe({

@@ -1,9 +1,9 @@
 .main-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); /* Ajusta automáticamente las columnas */
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 20px;
   justify-content: center;
-  align-items: start; /* Asegura que todas las tarjetas estén alineadas en la parte superior */
+  align-items: start; 
   width: 80%;
   margin: 0 auto;
 }

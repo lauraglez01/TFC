@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Book, Reading } from '../interfaces/book.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../sections/services/auth.service';
-import { Review } from '../../reviews/interfaces/review.interface'; // Asegúrate de tener la interfaz de reseñas
+import { Review } from '../../reviews/interfaces/review.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -49,7 +49,6 @@ export class BookService {
     return this.http.post(`http://localhost/api/book/${bookId}/status`, body, { headers });
   }
 
-  /** Obtener reseñas de un libro */
   public getReviewsByBook(bookId: number): Observable<Review[]> {
     const token = this.authService.getToken();
     const headers = token
@@ -57,11 +56,5 @@ export class BookService {
       : undefined;
 
     return this.http.get<Review[]>(`http://localhost/api/book/${bookId}/reviews`, { headers });
-  }
-
-  /** Actualizar reseñas del libro (esto es solo un ejemplo, si necesitas esto de alguna forma) */
-  public updateReviews(bookId: number, reviews: Review[]): void {
-    // Aquí puedes hacer algo como un cambio en la vista de tus reseñas
-    // Ejemplo: Actualizar un servicio global o una variable en tu componente
   }
 }

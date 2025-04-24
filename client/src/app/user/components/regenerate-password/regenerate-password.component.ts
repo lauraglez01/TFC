@@ -31,7 +31,7 @@ export class RegeneratePasswordComponent {
     const email = this.regenerateForm.get('email')?.value;
 
     this.userService.sendRecoveryCode(email).subscribe({
-      next: (response) => {
+      next: () => {
         alert('Código de seguridad enviado a tu correo.');
         this.router.navigate(['/new-password']);
       },

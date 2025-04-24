@@ -65,12 +65,6 @@ export class HomeComponent implements OnInit {
 
       const shouldInclude = matchesSearch && matchesCategory;
 
-      console.log(`Book: ${book.title}`);
-      console.log({ hasSearch, query, matchesSearch });
-      console.log({ hasCategories, selectedCategories: Array.from(this.selectedCategories), matchesCategory });
-      console.log({ shouldInclude });
-      console.log('---');
-
       return shouldInclude;
     });
   }

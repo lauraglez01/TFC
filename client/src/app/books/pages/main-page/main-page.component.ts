@@ -18,7 +18,7 @@ export class MainPageComponent implements OnInit {
     // Cargamos todos los libros al inicio
     this.BookService.getBooks().subscribe((res: Book[]) => {
       this.books = res;
-      this.allBooks = res;  // Guardamos todos los libros también para cuando se reinicie el filtro
+      this.allBooks = res;  
     });
   }
 

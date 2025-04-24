@@ -13,7 +13,7 @@
     text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 1px;  
+    letter-spacing: 3px;  
 }
 
 
@@ -96,6 +96,8 @@
 .carousel-content .btn:hover {
     background-color: #a97d5d;
 }
+
+/* Barra de búsqueda */
 
 .search-bar input.form-control {
     width: 100%;
@@ -235,6 +237,7 @@
     filter: sepia(50%);
 }
 
+/* Botón de categoría */
 .category-btn {
     margin-top: 20px;
     padding: 8px 16px;

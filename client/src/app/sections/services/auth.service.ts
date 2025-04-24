@@ -13,7 +13,6 @@ export class AuthService {
   private token: string | null = localStorage.getItem('accessToken');
   private authState = new BehaviorSubject<boolean>(this.isAuthenticated());
 
-  // Exponer el observable authState$ para que otros componentes o guards puedan suscribirse
   public authState$ = this.authState.asObservable();
 
   private isLoadingSubject = new BehaviorSubject<boolean>(false);

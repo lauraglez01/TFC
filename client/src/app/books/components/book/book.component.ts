@@ -35,12 +35,10 @@ export class BookComponent implements OnInit {
     this.isAuthenticated = this.authService.isAuthenticated();
   
     const bookId = this.route.snapshot.paramMap.get('bookId');
-    console.log('Book ID from URL:', bookId);  // Verificar que 'bookId' esté bien recuperado
   
     if (bookId) {
       this.bookService.getBooks().subscribe((books: Book[]) => {
         this.bookDetails = books.find(book => book.id === +bookId) || null;
-        console.log('Book details:', this.bookDetails);  // Verificar si se encuentra el libro
         this.isLoading = false;
   
         if (!this.bookDetails) {
@@ -74,7 +72,6 @@ export class BookComponent implements OnInit {
   
     this.bookService.setBookStatus(this.bookDetails!.id, status).subscribe({
       next: () => {
-        console.log('Status updated successfully');
       },
       error: (err) => {
         console.error('Error updating status:', err);

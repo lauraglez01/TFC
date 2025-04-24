@@ -1,5 +1,5 @@
 <div class="dashboard">
-    <h2>Dashboard</h2>
+    <h2>Personal Library</h2>
   
     @for (status of getStatuses(); track status; let i = $index) {
       <div class="status-section">
@@ -8,7 +8,7 @@
         @if (booksByStatus[status] && booksByStatus[status].length > 0) {
           <ul class="book-list">
             @for (book of booksByStatus[status]; track book.id; let i = $index) {
-              <li class="book-card">
+              <li class="book-card" [routerLink]="['/book', book.id]">
                 <img 
                   [src]="book.cover" 
                   alt="{{ book.title }} cover" 
