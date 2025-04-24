@@ -1,0 +1,90 @@
+/* Reseñas */
+.review-form {
+    background-color: #f8f9fa; /* Fondo suave */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 975px;
+    margin: auto;
+}
+
+.review-form h4 {
+    font-family: 'Georgia', serif;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Campo de selección de valoración */
+.review-form .form-label {
+    font-size: 1.1rem;
+    color: #495057;
+    font-weight: bold;
+}
+
+.review-form .form-select {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #fff8e1; /* Fondo suave como galletas */
+    border: 1px solid #ddd;
+}
+
+.review-form .form-select:focus {
+    border-color: #f4c33f; /* Color de foco */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+/* Caja de texto para comentario */
+.review-form .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #fff8e1; /* Mismo color que select */
+    border: 1px solid #ddd;
+}
+
+.review-form .form-control:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+/* Botón de envío */
+.review-form button {
+    background-color: #f4c33f; /* Galleta dorada */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.review-form button:hover {
+    background-color: #ffb300;
+}
+
+.review-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Mensaje si no está autenticado */
+.review-form ng-template {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.review-form ng-template a {
+    color: #f4c33f;
+    text-decoration: underline;
+}
+
+.review-form ng-template a:hover {
+    color: #ffb300;
+}

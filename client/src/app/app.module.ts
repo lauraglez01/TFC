@@ -19,9 +19,10 @@ import { SectionsModule } from "./sections/sections.module";
     ReviewsModule,
     AppRoutingModule,
     RouterModule,
-    SectionsModule
+    SectionsModule,
 ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

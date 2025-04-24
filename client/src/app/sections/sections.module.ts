@@ -9,14 +9,13 @@ import { BooksModule } from '../books/books.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-
 @NgModule({
   declarations: [
     NavbarComponent,
     MainPageComponent,
     HomeComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,

@@ -12,4 +12,14 @@ class Review extends Model
     protected $table = 'reviews';
 
     protected $fillable = ['book_id', 'user_id', 'rating', 'comment'];
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

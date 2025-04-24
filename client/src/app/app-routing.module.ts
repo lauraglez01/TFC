@@ -18,9 +18,8 @@ import { DashboardComponent } from './sections/components/dashboard/dashboard.co
 import { AuthGuard as SectionsGuard } from './sections/services/auth.guard';
 
 import { MainPageComponent as ReviewsMainPage } from './reviews/pages/main-page/main-page.component';
-import { ReviewsListComponent } from './reviews/components/reviews-list/reviews-list.component';
-import { ReviewComponent } from './reviews/components/review/review.component';
 import { NewPasswordComponent } from './user/components/new-password/new-password.component';
+import { ReviewFormComponent } from './reviews/components/review-form/review-form.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +29,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'book/:bookId', component: BookComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [SectionsGuard] },
+  { path: 'book/:bookId/review', canActivate: [SectionsGuard], component: ReviewFormComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe
 ];

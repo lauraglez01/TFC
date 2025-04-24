@@ -6,6 +6,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { provideHttpClient } from '@angular/common/http';
 import { Book } from './interfaces/book.interface';
 import { RouterModule } from '@angular/router';
+import { ReviewsModule } from '../reviews/reviews.module';
 
 
 
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReviewsModule
   ],
   exports: [
     MainPageComponent,

@@ -1,0 +1,64 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.review-date {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.review-author {
+    margin-top: 2.5rem;
+    /* espacio debajo de la fecha */
+    font-size: 0.875rem;
+    color: #4a4a4a;
+}
+
+.text-muted {
+    color: #888;
+}
+
+.text-gray-700 {
+    color: #4a4a4a;
+}
+
+.bi-star,
+.bi-star-fill {
+    font-size: 1.2rem;
+    margin-right: 2px;
+}
+
+
+ul {
+    padding-left: 0;
+}
+
+p {
+    margin: 0;
+}

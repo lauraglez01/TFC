@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Book, Reading } from '../interfaces/book.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../sections/services/auth.service';
+import { Review } from '../../reviews/interfaces/review.interface'; // Asegúrate de tener la interfaz de reseñas
 
 @Injectable({
   providedIn: 'root',
@@ -22,11 +23,10 @@ export class BookService {
   getUserReadings(): Observable<any> {
     return this.http.get(`http://localhost/api/user/readings`, {
       headers: {
-        Authorization: `Bearer ${this.authService.getToken()}`
-      }
+        Authorization: `Bearer ${this.authService.getToken()}`,
+      },
     });
   }
-  
 
   public getBooksByCategory(categories: string[]): Observable<Book[]> {
     const categoriesParam = categories.join(',');
@@ -34,7 +34,6 @@ export class BookService {
   }
 
   public setBookStatus(bookId: number, status: string): Observable<any> {
-
     const token = this.authService.getToken();
     console.log('Token enviado:', token);
     if (!token) {
@@ -42,11 +41,27 @@ export class BookService {
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
     const body = { status };
 
     return this.http.post(`http://localhost/api/book/${bookId}/status`, body, { headers });
+  }
+
+  /** Obtener reseñas de un libro */
+  public getReviewsByBook(bookId: number): Observable<Review[]> {
+    const token = this.authService.getToken();
+    const headers = token
+      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      : undefined;
+
+    return this.http.get<Review[]>(`http://localhost/api/book/${bookId}/reviews`, { headers });
+  }
+
+  /** Actualizar reseñas del libro (esto es solo un ejemplo, si necesitas esto de alguna forma) */
+  public updateReviews(bookId: number, reviews: Review[]): void {
+    // Aquí puedes hacer algo como un cambio en la vista de tus reseñas
+    // Ejemplo: Actualizar un servicio global o una variable en tu componente
   }
 }

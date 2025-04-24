@@ -68,7 +68,8 @@
 }
 
 .carousel-content .book-title {
-    font-size: 1.5rem;
+    font-family: 'Dongle', sans-serif;
+    font-size: 2.25rem;
     font-weight: bold;
     margin-bottom: 10px;
     color: #8d6748;
@@ -195,7 +196,8 @@
 .custom-book-card .card-title {
     color: #8d6748;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 2rem;
+    font-family: 'Dongle', sans-serif;
 }
 
 .custom-book-card .btn-primary {

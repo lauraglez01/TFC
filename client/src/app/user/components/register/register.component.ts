@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { UserRegister } from '../../interfaces/user';
+import { UserRegister } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'user-components-register',

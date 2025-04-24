@@ -1,19 +1,13 @@
+// src/app/reviews/reviews.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReviewComponent } from './components/review/review.component';
-import { ReviewsListComponent } from './components/reviews-list/reviews-list.component';
-import { MainPageComponent } from './pages/main-page/main-page.component';
-
-
+import { FormsModule } from '@angular/forms'; // <-- aquí
+import { ReviewFormComponent } from './components/review-form/review-form.component';
+import { ReviewListComponent } from './components/review-list/review-list.component';
 
 @NgModule({
-  declarations: [
-    ReviewComponent,
-    ReviewsListComponent,
-    MainPageComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [ReviewFormComponent, ReviewListComponent],
+  imports: [CommonModule, FormsModule],
+  exports: [ReviewFormComponent, ReviewListComponent]
 })
-export class ReviewsModule { }
+export class ReviewsModule {}

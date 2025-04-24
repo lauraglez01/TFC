@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(Reading::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     /**
      * Devuelve el estado de lectura que el usuario actual tiene para un libro dado.
      *
