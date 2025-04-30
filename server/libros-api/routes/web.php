@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return response()->json(['message' => 'Please log in'], 401);
+})->name('login');
+
 Route::get('/books', [BookController::class, 'index']);

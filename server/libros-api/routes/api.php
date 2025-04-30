@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\StoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,15 @@ Route::get('/books', function (Request $request) {
     }
 
     return response()->json($query->get());
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/stories', [StoryController::class, 'index']); 
+    Route::post('/stories', [StoryController::class, 'store']); 
+    Route::delete('/stories/{id}', [StoryController::class, 'destroy']);
+    Route::post('/stories/upload', [StoryController::class, 'upload']);
+    Route::get('/stories/{id}/content', [StoryController::class, 'showContent']);
+    Route::get('/stories/{id}/preview', [StoryController::class, 'preview']);
 });
 
 // Autenticación

@@ -1,0 +1,38 @@
+<div class="container mt-4 stories-wrapper">
+  <h2 class="mb-3">📖 My Stories</h2>
+
+  <!-- Subir documento -->
+  <div class="mb-4">
+    <label for="file-upload" class="form-label">
+      Upload your story document 🍪
+    </label>
+    <input
+      type="file"
+      id="file-upload"
+      class="form-control"
+      (change)="onFileSelected($event)"
+      accept=".pdf,.docx,.txt"
+    />
+  </div>
+
+  <!-- Lista de historias -->
+   @if(stories.length > 0) { 
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let story of stories">
+          <strong>{{ story.title }}</strong>
+          <button
+            class="btn btn-sm btn-outline-danger float-end me-2"
+            (click)="deleteStory(story.id)"
+          >
+            🗑️ Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+  } @else {
+    <p class="text-muted">
+      You haven't uploaded any stories yet. Time to start writing! 🍪
+    </p>
+  }
+</div>

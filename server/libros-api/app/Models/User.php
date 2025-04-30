@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Story;
 
 class User extends Authenticatable
 {
@@ -64,4 +65,13 @@ class User extends Authenticatable
         $reading = $this->readings()->where('book_id', $bookId)->first();
         return $reading?->status ?? 'not started';
     }
+
+    /**
+     * Summary of stories
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stories()
+{
+    return $this->hasMany(Story::class);
+}
 }

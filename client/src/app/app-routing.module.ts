@@ -21,6 +21,8 @@ import { MainPageComponent as ReviewsMainPage } from './reviews/pages/main-page/
 import { NewPasswordComponent } from './user/components/new-password/new-password.component';
 import { ReviewFormComponent } from './reviews/components/review-form/review-form.component';
 
+import { StoriesComponent } from './sections/components/stories/stories.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -30,6 +32,7 @@ const routes: Routes = [
   { path: 'book/:bookId', component: BookComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [SectionsGuard] },
   { path: 'book/:bookId/review', canActivate: [SectionsGuard], component: ReviewFormComponent },
+  { path: 'stories', component: StoriesComponent, canActivate: [SectionsGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe
 ];
