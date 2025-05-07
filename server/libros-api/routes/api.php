@@ -8,6 +8,8 @@ use App\Models\Book;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StoryController;
+use App\Http\Controllers\ForumPostController;
+use App\Http\Controllers\ForumCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +59,7 @@ Route::get('/books', function (Request $request) {
     return response()->json($query->get());
 });
 
+// Historias de usuario
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/stories', [StoryController::class, 'index']); 
     Route::post('/stories', [StoryController::class, 'store']); 
@@ -64,6 +67,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/stories/upload', [StoryController::class, 'upload']);
     Route::get('/stories/{id}/content', [StoryController::class, 'showContent']);
     Route::get('/stories/{id}/preview', [StoryController::class, 'preview']);
+});
+
+// Foro
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/forum', [ForumPostController::class, 'index']);
+    Route::post('/forum', [ForumPostController::class, 'store']);
+    Route::get('/forum/{id}', [ForumPostController::class, 'show']);
+    Route::put('/forum/{id}', [ForumPostController::class, 'update']);
+    Route::delete('/forum/{id}', [ForumPostController::class, 'destroy']);
+
+    Route::post('/forum/{postId}/comments', [ForumCommentController::class, 'store']);
+    Route::delete('/comments/{id}', [ForumCommentController::class, 'destroy']);
 });
 
 // Autenticación
