@@ -7,7 +7,7 @@ import { RegisterComponent } from './user/components/register/register.component
 import { RegeneratePasswordComponent } from './user/components/regenerate-password/regenerate-password.component';
 import { MainPageComponent as UserMainPage } from './user/pages/main-page/main-page.component';
 
-import { MainPageComponent as BooksMainPage} from './books/pages/main-page/main-page.component';
+import { MainPageComponent as BooksMainPage } from './books/pages/main-page/main-page.component';
 import { BooksListComponent } from './books/components/books-list/books-list.component';
 import { BookComponent } from './books/components/book/book.component';
 
@@ -30,21 +30,33 @@ const routes: Routes = [
   { path: 'new-password', component: NewPasswordComponent },
   { path: 'home', component: HomeComponent },
   { path: 'book/:bookId', component: BookComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [SectionsGuard] },
-  { path: 'book/:bookId/review', canActivate: [SectionsGuard], component: ReviewFormComponent },
-  { path: 'stories', component: StoriesComponent, canActivate: [SectionsGuard] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [SectionsGuard],
+  },
+  {
+    path: 'book/:bookId/review',
+    canActivate: [SectionsGuard],
+    component: ReviewFormComponent,
+  },
+  {
+    path: 'stories',
+    component: StoriesComponent,
+    canActivate: [SectionsGuard],
+  },
+  {
+    path: 'forum',
+    loadChildren: () =>
+      import('./forum/forum.module').then((m) => m.ForumModule),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(routes),
-    CommonModule
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes), CommonModule],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

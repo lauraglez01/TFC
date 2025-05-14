@@ -1,0 +1,27 @@
+<div *ngIf="post">
+  <h2>{{ post.title }}</h2>
+  <p><em>Por {{ post.user?.name }}</em></p>
+  <p>{{ post.content }}</p>
+
+  <!-- Botones de editar y eliminar solo si el usuario es el creador -->
+  <div *ngIf="isPostOwner(post.user_id)">
+    <button (click)="edit()">Editar</button>
+    <button (click)="delete()">Eliminar</button>
+  </div>
+
+  <hr />
+  <h3>Comentarios</h3>
+  <ul>
+    <li *ngFor="let comment of post.comments">
+      <strong>{{ comment.user?.name }}</strong>: {{ comment.content }}
+      <!-- Botón de eliminar solo si el usuario es el creador del comentario -->
+      <button *ngIf="isCommentOwner(comment.user_id)" (click)="deleteComment(comment.id)">
+        Eliminar
+      </button>
+    </li>
+  </ul>
+  <app-forum-comment
+    [postId]="post.id"
+    [comments]="post.comments || []"
+    (commentAdded)="onCommentAdded()"></app-forum-comment>
+</div>

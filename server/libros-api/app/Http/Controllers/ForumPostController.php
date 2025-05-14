@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ForumPostController extends Controller
 {
-    public function index() {
-        return ForumPost::with('user', 'comments.user')->latest()->get();
+    public function index()
+    {
+        $posts = ForumPost::with('user:id,name')->get(); // Incluye solo los campos necesarios del usuario
+        return response()->json($posts);
     }
 
     public function store(Request $request) {

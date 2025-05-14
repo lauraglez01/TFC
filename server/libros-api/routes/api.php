@@ -70,14 +70,14 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 // Foro
+Route::get('/forum', [ForumPostController::class, 'index']); 
+Route::get('/forum/{id}', [ForumPostController::class, 'show']); 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/forum', [ForumPostController::class, 'index']);
-    Route::post('/forum', [ForumPostController::class, 'store']);
-    Route::get('/forum/{id}', [ForumPostController::class, 'show']);
-    Route::put('/forum/{id}', [ForumPostController::class, 'update']);
+    Route::post('/forum', [ForumPostController::class, 'store']); 
+    Route::put('/forum/{id}', [ForumPostController::class, 'update']); 
     Route::delete('/forum/{id}', [ForumPostController::class, 'destroy']);
 
-    Route::post('/forum/{postId}/comments', [ForumCommentController::class, 'store']);
+    Route::post('/forum/{postId}/comments', [ForumCommentController::class, 'store']); 
     Route::delete('/comments/{id}', [ForumCommentController::class, 'destroy']);
 });
 

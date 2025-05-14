@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-
 export class AuthService {
   private url: string = 'http://127.0.0.1/api';
   private token: string | null = localStorage.getItem('accessToken');
@@ -18,6 +17,8 @@ export class AuthService {
   private isLoadingSubject = new BehaviorSubject<boolean>(false);
   public isLoading$ = this.isLoadingSubject.asObservable();
 
+  private userId: number | null = null;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<UserLogin> {
@@ -27,7 +28,7 @@ export class AuthService {
   setToken(token: string): void {
     this.token = token;
     localStorage.setItem('accessToken', token);
-    this.authState.next(true); 
+    this.authState.next(true);
   }
 
   getToken(): string | null {
@@ -36,25 +37,41 @@ export class AuthService {
 
   logout(): void {
     this.isLoadingSubject.next(true);
-  
-    this.http.post(`${this.url}/logout`, {}, { headers: { Authorization: `Bearer ${this.getToken()}` } })
+
+    this.http
+      .post(
+        `${this.url}/logout`,
+        {},
+        { headers: { Authorization: `Bearer ${this.getToken()}` } }
+      )
       .subscribe({
         next: () => this.clearSession(),
         error: (err) => {
           console.error('Error during logout', err);
           this.clearSession();
-        }
+        },
       });
   }
-  
+
   private clearSession(): void {
     setTimeout(() => {
       localStorage.removeItem('accessToken');
       this.token = null;
-      this.authState.next(false); 
+      this.authState.next(false);
       this.isLoadingSubject.next(false);
-      this.router.navigate(['/home']); // Redirige a /home después de hacer logout
-    }, 50); 
+      this.router.navigate(['/home']);
+    }, 50);
+  }
+
+  loadUser(): Observable<any> {
+    return this.http.get('/api/user');
+  }
+
+  setUserId(id: number): void {
+    this.userId = id;
+  }
+  getUserId(): number | null {
+    return this.userId;
   }
 
   isAuthenticated(): boolean {

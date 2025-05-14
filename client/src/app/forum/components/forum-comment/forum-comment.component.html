@@ -1,0 +1,7 @@
+<div *ngIf="isAuthenticated()">
+  <textarea [(ngModel)]="comment" placeholder="Escribe un comentario..."></textarea>
+  <button (click)="submitComment()">Comentar</button>
+</div>
+<p *ngIf="!isAuthenticated()" class="text-muted">
+  Debes iniciar sesión para agregar un comentario.
+</p>

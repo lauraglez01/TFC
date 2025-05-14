@@ -1,0 +1,9 @@
+<div class="forum-list">
+  <h2>Foro</h2>
+  <button (click)="newPost()">Nueva entrada</button>
+  <ul>
+    <li *ngFor="let post of posts" (click)="goToPost(post.id)">
+      <strong>{{ post.title }}</strong> - por {{ post.user?.name}}
+    </li>
+  </ul>
+</div>
