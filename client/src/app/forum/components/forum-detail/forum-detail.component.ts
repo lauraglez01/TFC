@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForumService } from '../../services/forum.service';
-import { ForumPost } from '../../interfaces/forum.interface';
+import { ForumPost, ForumComment } from '../../interfaces/forum.interface';
 import { AuthService } from '../../../sections/services/auth.service';
+import { User } from '../../../user/interfaces/user.interface';
 
 @Component({
   selector: 'app-forum-detail',
@@ -13,7 +14,11 @@ import { AuthService } from '../../../sections/services/auth.service';
 })
 export class ForumDetailComponent implements OnInit {
   post: ForumPost | null = null;
+  posts: ForumPost[] = [];
   postId!: number;
+  user: User | null = null;
+  editingCommentId: number | null = null;
+  editedCommentContent: string = '';
 
   constructor(
     private forumService: ForumService,
@@ -24,9 +29,20 @@ export class ForumDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.postId = Number(this.route.snapshot.paramMap.get('id'));
-    this.forumService
-      .getPost(this.postId)
-      .subscribe((post) => (this.post = post));
+
+    this.authService.loadUser().subscribe({
+      next: (user) => {
+        this.user = user;
+        this.authService.setUserId(user.id); // IMPORTANTE
+      },
+      error: () => {
+        this.user = null;
+      },
+    });
+
+    this.forumService.getPost(this.postId).subscribe((post) => {
+      this.post = post;
+    });
   }
 
   edit() {
@@ -41,27 +57,33 @@ export class ForumDetailComponent implements OnInit {
     }
   }
 
+  deletePost(id: number) {
+    if (confirm('¿Eliminar esta entrada?')) {
+      this.forumService.deletePost(id).subscribe(() => {
+        this.posts = this.posts.filter((p) => p.id !== id);
+        this.router.navigate(['/forum']);
+      });
+    }
+  }
+
   isPostOwner(userId: number): boolean {
-    const currentUserId = this.authService.getUserId();
-    if (!currentUserId) return false; // Si no hay usuario autenticado, retorna false
-    return currentUserId === userId;
+    return this.user?.id === userId;
   }
 
   isCommentOwner(userId: number): boolean {
-    const currentUserId = this.authService.getUserId();
-    if (!currentUserId) return false; // Si no hay usuario autenticado, retorna false
-    return currentUserId === userId;
+    return this.user?.id === userId;
   }
 
   deleteComment(commentId: number): void {
     this.forumService.deleteComment(commentId).subscribe({
       next: () => {
-        this.post!.comments = this.post!.comments!.filter(
+        // Filtra el comentario eliminado de la lista local
+        this.post!.comments = this.post!.comments?.filter(
           (c) => c.id !== commentId
         );
       },
-      error: (err) => {
-        console.error('Error deleting comment:', err);
+      error: () => {
+        alert('Error deleting comment');
       },
     });
   }
@@ -75,5 +97,27 @@ export class ForumDetailComponent implements OnInit {
         console.error('Error al actualizar los comentarios:', err);
       },
     });
+  }
+
+  editComment(comment: ForumComment): void {
+    this.editingCommentId = comment.id;
+    this.editedCommentContent = comment.content;
+  }
+
+  cancelCommentEdit(): void {
+    this.editingCommentId = null;
+    this.editedCommentContent = '';
+  }
+
+  saveCommentEdit(commentId: number): void {
+    this.forumService
+      .updateComment(commentId, this.editedCommentContent)
+      .subscribe({
+        next: () => {
+          this.editingCommentId = null;
+          this.onCommentAdded(); // recarga comentarios
+        },
+        error: () => alert('Error updating comment'),
+      });
   }
 }

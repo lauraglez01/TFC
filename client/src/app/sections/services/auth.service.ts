@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { UserLogin } from '../../user/interfaces/user.interface';
+import { Observable, BehaviorSubject, finalize } from 'rxjs';
+import { UserLogin, User } from '../../user/interfaces/user.interface';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -63,9 +63,17 @@ export class AuthService {
     }, 50);
   }
 
-  loadUser(): Observable<any> {
-    return this.http.get('/api/user');
-  }
+loadUser(): Observable<User> {
+  this.isLoadingSubject.next(true);
+
+  return this.http.get<User>(`${this.url}/user`, {
+    headers: { Authorization: `Bearer ${this.getToken()}` },
+  }).pipe(
+    // Finaliza la carga correctamente, sea éxito o error
+    finalize(() => this.isLoadingSubject.next(false))
+  );
+}
+
 
   setUserId(id: number): void {
     this.userId = id;

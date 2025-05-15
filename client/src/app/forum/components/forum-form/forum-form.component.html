@@ -1,6 +1,8 @@
-<h2>{{ editing ? 'Editar entrada' : 'Nueva entrada' }}</h2>
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <input formControlName="title" placeholder="Título" />
-  <textarea formControlName="content" placeholder="Contenido"></textarea>
-  <button type="submit">Guardar</button>
-</form>
+<div class="forum-form">
+  <h2 class="entry-opt">{{ editing ? 'Edit entry' : 'New entry' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="forum-form">
+    <input formControlName="title" placeholder="Title" />
+    <textarea formControlName="content" placeholder="Write something!"></textarea>
+    <button type="submit">OK</button>
+  </form>
+</div>

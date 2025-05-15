@@ -1,0 +1,120 @@
+.forum-detail {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.forum-detail h2 {
+    font-family: 'Dongle', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #8d6748;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.forum-detail p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.forum-detail button {
+    background-color: #8d6748;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.forum-detail button:hover {
+    background-color: #a97d5d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.forum-detail button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.forum-detail .btn-outline-primary {
+    background-color: transparent;
+    color: #8d6748;
+    border: 2px solid #8d6748;
+    padding: 8px 18px;
+}
+
+.forum-detail .btn-outline-primary:hover {
+    background-color: #8d6748;
+    color: #fff;
+}
+
+.forum-detail .btn-outline-danger {
+    background-color: transparent;
+    color: #d9534f;
+    border: 2px solid #d9534f;
+    padding: 8px 18px;
+}
+
+.forum-detail .btn-outline-danger:hover {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.forum-detail ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.forum-detail li {
+    background: #fff5e6;
+    border: 1px solid #fcebd3;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column; /* Cambia a columna para alinear nombre y comentario */
+    gap: 5px; /* Espaciado entre el nombre y el comentario */
+    transition: background-color 0.3s ease;
+}
+
+.forum-detail li:hover {
+    background-color: #f5e0c3;
+}
+
+.forum-detail li strong {
+    color: #8d6748;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 5px; /* Espaciado entre el nombre y el comentario */
+}
+
+.forum-detail li .comment-content {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.forum-detail li .btn-outline-danger {
+    align-self: flex-end; /* Alinea el botón a la derecha */
+    margin-top: 5px; /* Espaciado entre el comentario y el botón */
+}
+
+.forum-detail hr {
+    border: 0;
+    height: 1px;
+    background: #fcebd3;
+    margin: 20px 0;
+}

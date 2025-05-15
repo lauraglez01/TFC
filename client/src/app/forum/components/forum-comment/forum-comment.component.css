@@ -1,0 +1,42 @@
+.comment-section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.comment-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #fcebd3;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+}
+
+.comment-section textarea:focus {
+    outline: none;
+    border-color: #8d6748;
+    box-shadow: 0 0 5px rgba(141, 103, 72, 0.5);
+}
+
+.comment-section button {
+    background-color: #8d6748;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-section button:hover {
+    background-color: #a97d5d;
+}
+
+.comment-section p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}

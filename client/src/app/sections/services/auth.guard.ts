@@ -12,14 +12,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     return this.authService.authState$.pipe(
-      take(1), // Toma solo el primer valor emitido por el observable
+      take(1),
       map((isAuthenticated) => {
         if (isAuthenticated) {
-          // Si el usuario está autenticado, permite el acceso
           return true;
         }
-
-        // Si no está autenticado, redirige a /login
         this.router.navigate(['/login']);
         return false;
       })

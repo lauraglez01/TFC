@@ -9,7 +9,7 @@ import { AuthService } from '../../sections/services/auth.service';
 export class ForumService {
   private apiUrl = 'http://localhost/api/forum';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   private authHeaders(): HttpHeaders {
     const token = localStorage.getItem('accessToken') || '';
@@ -18,32 +18,31 @@ export class ForumService {
 
   getPosts(): Observable<ForumPost[]> {
     return this.http.get<ForumPost[]>(`${this.apiUrl}`, {
-      headers: this.authHeaders()
+      headers: this.authHeaders(),
     });
   }
 
   getPost(id: number): Observable<ForumPost> {
     return this.http.get<ForumPost>(`${this.apiUrl}/${id}`, {
-      headers: this.authHeaders()
+      headers: this.authHeaders(),
     });
   }
-  
 
   createPost(post: Partial<ForumPost>): Observable<ForumPost> {
     return this.http.post<ForumPost>(this.apiUrl, post, {
-      headers: this.authHeaders()
+      headers: this.authHeaders(),
     });
   }
 
   updatePost(id: number, post: Partial<ForumPost>): Observable<ForumPost> {
     return this.http.put<ForumPost>(`${this.apiUrl}/${id}`, post, {
-      headers: this.authHeaders()
+      headers: this.authHeaders(),
     });
   }
 
   deletePost(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, {
-      headers: this.authHeaders()
+      headers: this.authHeaders(),
     });
   }
 
@@ -56,8 +55,16 @@ export class ForumService {
   }
 
   deleteComment(commentId: number): Observable<void> {
-  return this.http.delete<void>(`${this.apiUrl}/comments/${commentId}`, {
-    headers: this.authHeaders()
-  });
-}
+    return this.http.delete<void>(`${this.apiUrl}/comments/${commentId}`, {
+      headers: this.authHeaders(),
+    });
+  }
+  
+  updateComment(commentId: number, content: string): Observable<ForumComment> {
+    return this.http.put<ForumComment>(
+      `${this.apiUrl}/comments/${commentId}`,
+      { content },
+      { headers: this.authHeaders() }
+    );
+  }
 }
