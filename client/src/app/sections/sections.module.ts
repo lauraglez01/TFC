@@ -9,7 +9,7 @@ import { BooksModule } from '../books/books.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoriesComponent } from './components/stories/stories.component';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -24,7 +24,8 @@ import { StoriesComponent } from './components/stories/stories.component';
     RouterModule,
     ReactiveFormsModule,
     BooksModule,
-    FormsModule
+    FormsModule,
+    PdfViewerModule
   ],
   exports: [
     MainPageComponent,

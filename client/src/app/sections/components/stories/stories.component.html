@@ -16,23 +16,39 @@
   </div>
 
   <!-- Lista de historias -->
-   @if(stories.length > 0) { 
-    <div>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let story of stories">
-          <strong>{{ story.title }}</strong>
-          <button
-            class="btn btn-sm btn-outline-danger float-end me-2"
-            (click)="deleteStory(story.id)"
-          >
-            🗑️ Delete
-          </button>
-        </li>
-      </ul>
-    </div>
-  } @else {
+  <div *ngIf="stories.length > 0; else noStories">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let story of stories">
+        <strong>{{ story.title }}</strong>
+        <!--
+        <button
+          class="btn btn-sm btn-outline-primary float-end me-2"
+          (click)="viewStory(story.id)"
+        >
+          📄 View
+        </button>-->
+        <button
+          class="btn btn-sm btn-outline-danger float-end me-2"
+          (click)="deleteStory(story.id)"
+        >
+          🗑️ Delete
+        </button>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noStories>
     <p class="text-muted">
       You haven't uploaded any stories yet. Time to start writing! 🍪
     </p>
-  }
+  </ng-template>
+
+  <!-- Visor de PDF -->
+  <section *ngIf="pdfSrc">
+    <pdf-viewer
+      [src]="pdfSrc"
+      [render-text]="true"
+      [original-size]="false"
+      style="max-width: 800px; height: 700px;"
+    ></pdf-viewer>
+  </section>
 </div>

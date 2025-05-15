@@ -33,6 +33,7 @@ class StoryController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image' => 'nullable|string',
+            'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,txt|max:2048',
             ]);
 
         $story = Auth::user()->stories()->create($validatedData);
@@ -68,6 +69,7 @@ class StoryController extends Controller
                 'title' => $file->getClientOriginalName(),
                 'description' => 'Uploaded via file',
                 'image' => $path,
+                'file' => $path,
             ]);
     
             return response()->json([
@@ -88,30 +90,26 @@ class StoryController extends Controller
     $story = Auth::user()->stories()->findOrFail($id);
 
     if (!$story->image) {
-        return response('No file associated', 404);
+        return response()->json(['message' => 'No file associated'], 404);
     }
 
-    $path = storage_path('app/public/' . $story->image);
+    // Construye la URL pública (asegúrate de que storage:link esté hecho)
+    $url = asset('storage/' . $story->image);
 
-    if (!file_exists($path)) {
-        return response('File not found', 404);
-    }
-
-    return response()->file($path);
+    return response()->json(['url' => $url], 200);
 }
+
 
 public function preview($id)
 {
     $story = Auth::user()->stories()->findOrFail($id);
 
-    // Ruta absoluta en storage/app/public/...
     $path = storage_path('app/public/' . $story->image);
 
     if (!file_exists($path)) {
         return response()->json(['message' => 'File not found'], 404);
     }
 
-    // Detectar extensión
     $ext = strtolower(pathinfo($story->image, PATHINFO_EXTENSION));
 
     if ($ext === 'pdf') {
@@ -120,13 +118,14 @@ public function preview($id)
         ]);
     }
 
-    // Para texto plano (txt)
     if ($ext === 'txt') {
         $contents = file_get_contents($path);
         return response($contents, 200, [
             'Content-Type' => 'text/plain; charset=UTF-8',
         ]);
     }
+
     return response()->json(['message' => 'Unsupported file type'], 415);
 }
+
 }

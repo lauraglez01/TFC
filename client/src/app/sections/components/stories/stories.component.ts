@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoriesService } from '../../services/stories.service';
 import { Story } from '../../interfaces/story.interface';
+
 @Component({
   selector: 'app-stories',
   standalone: false,
@@ -9,6 +10,7 @@ import { Story } from '../../interfaces/story.interface';
 })
 export class StoriesComponent implements OnInit {
   stories: Story[] = [];
+  pdfSrc: string | null = null; 
 
   constructor(private svc: StoriesService) {}
 
@@ -23,22 +25,37 @@ export class StoriesComponent implements OnInit {
     });
   }
 
-  onFileSelected(e: Event) {
-    const file = (e.target as HTMLInputElement).files?.[0];
-    if (!file) return;
-    this.svc.uploadStory(file).subscribe({
-      next: () => this.loadStories(),
-      error: (err) => {
-        console.error(err);
-        alert('Upload failed');
-      },
-    });
-  }
+onFileSelected(e: Event) {
+  const file = (e.target as HTMLInputElement).files?.[0];
+  if (!file) return;
+
+  this.svc.uploadStory(file).subscribe({
+    next: (res) => {
+      console.log('Archivo subido:', res.story); // Depuración: Verifica que el archivo se guarda en la propiedad file
+      this.loadStories(); // Recarga las historias después de subir el archivo
+    },
+    error: (err) => {
+      console.error('Error al subir el archivo:', err);
+      alert('Upload failed');
+    },
+  });
+}
 
   deleteStory(id: number) {
     this.svc.deleteStory(id).subscribe({
       next: () => (this.stories = this.stories.filter((s) => s.id !== id)),
       error: () => alert('Error deleting story'),
+    });
+  }
+
+  viewStory(id: number): void {
+    this.svc.getStoryContent(id).subscribe({
+      next: (res) => {
+        this.pdfSrc = res.url;
+      },
+      error: (err) => {
+        console.error('Error loading story content:', err);
+      },
     });
   }
 }

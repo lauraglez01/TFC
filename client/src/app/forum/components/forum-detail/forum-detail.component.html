@@ -1,23 +1,23 @@
 <div *ngIf="post" class="forum-detail">
-  <h2>{{ post.title }}</h2>
-  <p><em>By {{ post.user?.name }}</em></p>
-  <p>{{ post.content }}</p>
+  <div class="post">
+    <h2>{{ post.title }}</h2>
+    <p><em>By {{ post.user?.name }}</em></p>
+    <p>{{ post.content }}</p>
 
-  <!-- Mostrar botones si es el autor -->
-  <div *ngIf="isPostOwner(post.user_id)">
-    <button class="btn btn-sm btn-outline-primary me-2" (click)="edit()">
-      ✏️ Edit
-    </button>
-    <button class="btn btn-sm btn-outline-danger" (click)="deletePost(post.id)">
-      🗑️ Delete
-    </button>
+    <div *ngIf="isPostOwner(post.user_id)">
+      <button class="btn btn-sm btn-outline-primary me-2" (click)="edit()">
+        ✏️ Edit
+      </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="deletePost(post.id)">
+        🗑️ Delete
+      </button>
+    </div>
   </div>
   <hr />
   <h3>Comments</h3>
   <ul>
     <li *ngFor="let comment of post.comments" class="list-group-item">
       <strong>{{ comment.user?.name }}</strong> {{ comment.content }}
-      <!-- Botón de eliminar solo si el usuario es el creador del comentario -->
       <button *ngIf="isCommentOwner(comment.user_id)" class="btn btn-sm btn-outline-danger float-end me-2"
         (click)="deleteComment(comment.id)">
         🗑️ Delete

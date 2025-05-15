@@ -15,6 +15,7 @@ class Story extends Model
         'title',
         'description',
         'image',
+        'file',
         'user_id',
         'status',
     ];

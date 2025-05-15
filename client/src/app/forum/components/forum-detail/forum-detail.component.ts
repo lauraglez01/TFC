@@ -77,7 +77,6 @@ export class ForumDetailComponent implements OnInit {
   deleteComment(commentId: number): void {
     this.forumService.deleteComment(commentId).subscribe({
       next: () => {
-        // Filtra el comentario eliminado de la lista local
         this.post!.comments = this.post!.comments?.filter(
           (c) => c.id !== commentId
         );
@@ -91,7 +90,7 @@ export class ForumDetailComponent implements OnInit {
   onCommentAdded(): void {
     this.forumService.getPost(this.postId).subscribe({
       next: (post) => {
-        this.post!.comments = post.comments; // Reemplaza la lista de comentarios
+        this.post!.comments = post.comments;
       },
       error: (err) => {
         console.error('Error al actualizar los comentarios:', err);
@@ -115,7 +114,7 @@ export class ForumDetailComponent implements OnInit {
       .subscribe({
         next: () => {
           this.editingCommentId = null;
-          this.onCommentAdded(); // recarga comentarios
+          this.onCommentAdded(); 
         },
         error: () => alert('Error updating comment'),
       });

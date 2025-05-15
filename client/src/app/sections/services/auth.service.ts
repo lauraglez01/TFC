@@ -69,7 +69,6 @@ loadUser(): Observable<User> {
   return this.http.get<User>(`${this.url}/user`, {
     headers: { Authorization: `Bearer ${this.getToken()}` },
   }).pipe(
-    // Finaliza la carga correctamente, sea éxito o error
     finalize(() => this.isLoadingSubject.next(false))
   );
 }

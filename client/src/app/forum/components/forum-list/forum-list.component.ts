@@ -20,9 +20,15 @@ export class ForumListComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
-    this.forumService.getPosts().subscribe((posts) => (this.posts = posts));
-  }
+ngOnInit(): void {
+  this.forumService.getPosts().subscribe((posts) => {
+    this.posts = posts.sort((a, b) => {
+      const dateA = new Date(a.created_at).getTime();
+      const dateB = new Date(b.created_at).getTime();
+      return dateB - dateA; 
+    });
+  });
+}
 
   goToPost(id: number) {
     this.router.navigate(['/forum', id]);

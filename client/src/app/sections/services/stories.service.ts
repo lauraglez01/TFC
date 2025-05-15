@@ -16,33 +16,29 @@ export class StoriesService {
   }
 
   getStories(): Observable<{ stories: Story[] }> {
-    return this.http.get<{ stories: Story[] }>(
-      this.apiUrl,
-      { headers: this.authHeaders() }
-    );
+    return this.http.get<{ stories: Story[] }>(this.apiUrl, {
+      headers: this.authHeaders(),
+    });
   }
 
   uploadStory(file: File): Observable<{ story: Story }> {
     const form = new FormData();
     form.append('file', file);
-    return this.http.post<{ story: Story }>(
-      `${this.apiUrl}/upload`,
-      form,
-      { headers: this.authHeaders() }
-    );
+    return this.http.post<{ story: Story }>(`${this.apiUrl}/upload`, form, {
+      headers: this.authHeaders(),
+    });
   }
 
-  getStoryContent(id: number): Observable<string> {
-    return this.http.get(
-      `${this.apiUrl}/${id}/content`,
-      { headers: this.authHeaders(), responseType: 'text' }
-    );
-  }
+getStoryContent(id: number): Observable<{ url: string }> {
+  return this.http.get<{ url: string }>(`${this.apiUrl}/${id}/content`, {
+    headers: this.authHeaders(),
+  });
+}
+
 
   deleteStory(id: number): Observable<void> {
-    return this.http.delete<void>(
-      `${this.apiUrl}/${id}`,
-      { headers: this.authHeaders() }
-    );
+    return this.http.delete<void>(`${this.apiUrl}/${id}`, {
+      headers: this.authHeaders(),
+    });
   }
 }
