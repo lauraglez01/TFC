@@ -3,13 +3,13 @@
     <img src="assets/img/logo.png" alt="{{title}}" class="logo">
     <p class="subtitle">The perfect place for book lovers... and cookies!</p>
 
-    @if(!(authService.isAuthenticated() || (authService.isLoading$ | async))) { 
+    @if(!(authService.authState$ | async) && (authService.isLoading$ | async)) { 
       <button class="login-btn">
         <a routerLink="/login"><b>Log In</b></a>
       </button>
     }
 
-    @if(authService.isAuthenticated() && !(authService.isLoading$ | async)) { 
+    @if((authService.authState$ | async) && (authService.isLoading$ | async)) { 
       <button class="logout-btn" (click)="authService.logout()">
         <b>Log Out</b>
       </button>

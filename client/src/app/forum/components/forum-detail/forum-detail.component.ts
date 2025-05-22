@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  AfterViewInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForumService } from '../../services/forum.service';
 import { ForumPost, ForumComment } from '../../interfaces/forum.interface';
@@ -12,7 +16,7 @@ import { User } from '../../../user/interfaces/user.interface';
   templateUrl: './forum-detail.component.html',
   styleUrl: './forum-detail.component.css',
 })
-export class ForumDetailComponent implements OnInit {
+export class ForumDetailComponent implements OnInit, AfterViewInit {
   post: ForumPost | null = null;
   posts: ForumPost[] = [];
   postId!: number;
@@ -24,8 +28,15 @@ export class ForumDetailComponent implements OnInit {
     private forumService: ForumService,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {}
+
+  //esto lo uso para que no de el error de que la expresión cambiar
+  // después de que se haya ejecutado el ciclo de detección de cambios
+  ngAfterViewInit() {
+    this.cd.detectChanges();
+  }
 
   ngOnInit(): void {
     this.postId = Number(this.route.snapshot.paramMap.get('id'));
@@ -114,7 +125,7 @@ export class ForumDetailComponent implements OnInit {
       .subscribe({
         next: () => {
           this.editingCommentId = null;
-          this.onCommentAdded(); 
+          this.onCommentAdded();
         },
         error: () => alert('Error updating comment'),
       });

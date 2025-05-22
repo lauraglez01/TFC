@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 import { UserModule } from './user/user.module';
@@ -20,6 +21,7 @@ import { SectionsModule } from "./sections/sections.module";
     AppRoutingModule,
     RouterModule,
     SectionsModule,
+    RichTextEditorModule,
 ],
   providers: [
   ],

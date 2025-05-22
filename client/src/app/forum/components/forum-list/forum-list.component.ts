@@ -17,7 +17,7 @@ export class ForumListComponent implements OnInit {
   constructor(
     private forumService: ForumService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
 ngOnInit(): void {

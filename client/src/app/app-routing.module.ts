@@ -23,6 +23,8 @@ import { ReviewFormComponent } from './reviews/components/review-form/review-for
 
 import { StoriesComponent } from './sections/components/stories/stories.component';
 
+import { TextEditorComponent } from './sections/components/text-editor/text-editor.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -49,6 +51,11 @@ const routes: Routes = [
     path: 'forum',
     loadChildren: () =>
       import('./forum/forum.module').then((m) => m.ForumModule),
+  },
+  {
+    path: 'text-editor',
+    canActivate: [SectionsGuard],
+    component: TextEditorComponent,
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   { path: '**', redirectTo: 'home' }, // Redirige a /home si la ruta no existe

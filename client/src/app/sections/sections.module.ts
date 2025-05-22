@@ -10,6 +10,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService} from '@syncfusion/ej2-angular-richtexteditor';
+import { TextEditorComponent } from './components/text-editor/text-editor.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -18,6 +20,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     DashboardComponent,
     FooterComponent,
     StoriesComponent,
+    TextEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,14 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ReactiveFormsModule,
     BooksModule,
     FormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    RichTextEditorModule,
+  ],
+  providers: [
+    ToolbarService,
+    LinkService,
+    ImageService,
+    HtmlEditorService
   ],
   exports: [
     MainPageComponent,
