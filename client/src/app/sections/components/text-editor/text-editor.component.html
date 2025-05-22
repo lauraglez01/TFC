@@ -1,4 +1,5 @@
-<ejs-richtexteditor>
+<button ej-button id="button" class="e-control e-btn" (click)="getFormattedContent()">Get HTML</button>
+<ejs-richtexteditor #exampleRTE [toolbarSettings]="customToolbar">
     <ng-template #valueTemplate>
         <p>Text Editor</p>
     </ng-template>

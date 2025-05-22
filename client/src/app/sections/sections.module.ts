@@ -10,7 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService} from '@syncfusion/ej2-angular-richtexteditor';
+import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService, TableService, QuickToolbarService} from '@syncfusion/ej2-angular-richtexteditor';
 import { TextEditorComponent } from './components/text-editor/text-editor.component';
 @NgModule({
   declarations: [
@@ -35,7 +35,9 @@ import { TextEditorComponent } from './components/text-editor/text-editor.compon
     ToolbarService,
     LinkService,
     ImageService,
-    HtmlEditorService
+    HtmlEditorService,
+    TableService,
+    QuickToolbarService,
   ],
   exports: [
     MainPageComponent,
