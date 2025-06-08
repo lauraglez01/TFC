@@ -43,6 +43,6 @@
 - ✅ Gestión de lecturas y estados
 - ✅ Visualización de libros y reseñas públicas
 - ✅ Creación y listado de reseñas
-- 🔄 Importación de obras propias (no implementado aún)
-- 🔜 Foro, editor de texto online, y asistente virtual (en fase de planificación)
+- ✅ Importación de obras propias
+- ✅ Foro
 
