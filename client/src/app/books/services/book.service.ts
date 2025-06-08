@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book, Reading } from '../interfaces/book.interface';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AuthService } from '../../sections/services/auth.service';
 import { Review } from '../../reviews/interfaces/review.interface';
 
@@ -11,10 +11,7 @@ import { Review } from '../../reviews/interfaces/review.interface';
 export class BookService {
   private url: string = 'http://localhost/api/books';
 
-  constructor(
-    private http: HttpClient,
-    private authService: AuthService
-  ) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   public getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.url);
@@ -46,7 +43,9 @@ export class BookService {
 
     const body = { status };
 
-    return this.http.post(`http://localhost/api/book/${bookId}/status`, body, { headers });
+    return this.http.post(`http://localhost/api/book/${bookId}/status`, body, {
+      headers,
+    });
   }
 
   public getReviewsByBook(bookId: number): Observable<Review[]> {
@@ -55,6 +54,9 @@ export class BookService {
       ? new HttpHeaders({ Authorization: `Bearer ${token}` })
       : undefined;
 
-    return this.http.get<Review[]>(`http://localhost/api/book/${bookId}/reviews`, { headers });
+    return this.http.get<Review[]>(
+      `http://localhost/api/book/${bookId}/reviews`,
+      { headers }
+    );
   }
 }

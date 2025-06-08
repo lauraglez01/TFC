@@ -42,7 +42,8 @@ import { TextEditorComponent } from './components/text-editor/text-editor.compon
   exports: [
     MainPageComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ]
 })
 export class SectionsModule { }

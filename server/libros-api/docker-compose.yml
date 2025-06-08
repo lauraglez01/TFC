@@ -20,6 +20,8 @@ services:
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
             - '.:/var/www/html'
+            - 'storage_data:/var/www/html/storage'
+            - 'cache_data:/var/www/html/bootstrap/cache'
         networks:
             - sail
         depends_on:
@@ -76,4 +78,8 @@ networks:
         driver: bridge
 volumes:
     sail-mysql:
+        driver: local
+    storage_data:
+        driver: local
+    cache_data:
         driver: local

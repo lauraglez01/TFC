@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private url: string = 'http://127.0.0.1/api';
+  private url: string = 'http://localhost/api';
   private token: string | null = localStorage.getItem('accessToken');
   private authState = new BehaviorSubject<boolean>(this.isAuthenticated());
 

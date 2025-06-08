@@ -9,6 +9,7 @@ import { ReviewsModule } from './reviews/reviews.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { SectionsModule } from "./sections/sections.module";
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { SectionsModule } from "./sections/sections.module";
     RichTextEditorModule,
 ],
   providers: [
+    //provideHttpClientTesting()
   ],
   bootstrap: [AppComponent]
 })

@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       this.allBooks = books;
 
       this.recommendedBooks = this.getRecommendedBooks(books, 3);
-      this.filteredBooks = []; // ← NO mostrar nada inicialmente
+      this.filteredBooks = []; 
 
       this.categories = Array.from(
         new Set(books.flatMap((book) => book.categories.map((cat) => cat.name)))

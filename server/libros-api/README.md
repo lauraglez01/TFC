@@ -16,6 +16,10 @@ docker compose exec laravel.test php artisan migrate
 docker compose exec laravel.test php artisan migrate:fresh --seed
 ```
 
+Para ejecutar los tests, hacer:
+``` bash
+docker compose exec laravel.test php artisan test
+```
 
 
 
