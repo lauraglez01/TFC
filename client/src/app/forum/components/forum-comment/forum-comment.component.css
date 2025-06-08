@@ -39,3 +39,41 @@
     color: #555;
     margin-top: 10px;
 }
+
+/* Responsive for tablets */
+@media (max-width: 992px) {
+  .comment-section {
+    padding: 0 15px;
+  }
+
+  .comment-section textarea,
+  .comment-section button {
+    font-size: 0.95rem;
+  }
+
+  .comment-section p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 576px) {
+  .comment-section {
+    padding: 0 10px;
+  }
+
+  .comment-section textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .comment-section button {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .comment-section p {
+    font-size: 0.9rem;
+  }
+}

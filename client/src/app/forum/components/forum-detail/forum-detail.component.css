@@ -145,3 +145,79 @@
     background: #fcebd3;
     margin: 20px 0;
 }
+
+/* Responsive for tablets */
+@media (max-width: 992px) {
+  .forum-detail {
+    padding: 30px 15px;
+  }
+
+  .forum-detail h2 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  .forum-detail h3 {
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+  }
+
+  .forum-detail p,
+  .forum-detail li .comment-content,
+  .forum-detail li strong,
+  .post em {
+    font-size: 1.05rem;
+  }
+
+  .forum-detail button {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 576px) {
+  .forum-detail {
+    padding: 20px 10px;
+  }
+
+  .forum-detail h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .forum-detail h3 {
+    font-size: 1.4rem;
+  }
+
+  .forum-detail p,
+  .forum-detail li .comment-content,
+  .forum-detail li strong,
+  .post em {
+    font-size: 0.95rem;
+  }
+
+  .post,
+  .forum-detail li {
+    padding: 15px;
+  }
+
+  .forum-detail button,
+  .forum-detail .btn-outline-primary,
+  .forum-detail .btn-outline-danger {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .forum-detail button + button {
+    margin-top: 10px;
+    margin-right: 0;
+  }
+
+  .forum-detail li .btn-outline-danger {
+    margin-top: 10px;
+    align-self: stretch;
+  }
+}

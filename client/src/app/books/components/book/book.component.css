@@ -146,3 +146,94 @@ h2 {
   font-family: 'Dongle', sans-serif;
 }
 
+/* Responsive Design for Tablets */
+@media (max-width: 992px) {
+  .book-details {
+    padding: 1.5rem;
+  }
+
+  .book-cover {
+    max-width: 200px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .book-meta {
+    font-size: 0.95rem;
+  }
+
+  .description, .category {
+    font-size: 0.95rem;
+  }
+
+  .dropdown-toggle {
+    font-size: 0.95rem;
+  }
+
+  .back-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.5rem;
+  }
+
+  .loading-text {
+    font-size: 1.8rem;
+  }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 576px) {
+  .book-details-container {
+    padding: 30px 10px;
+  }
+
+  .book-details {
+    padding: 1.2rem;
+  }
+
+  .book-cover {
+    max-width: 160px;
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .book-meta {
+    font-size: 0.9rem;
+  }
+
+  .description, .category {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .dropdown-toggle {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .dropdown-item {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .back-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .loading-text {
+    font-size: 1.6rem;
+  }
+}

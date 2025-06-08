@@ -54,3 +54,55 @@
     color: #8d6748;
     font-weight: bold;
 }
+
+/* Responsive for tablets */
+@media (max-width: 992px) {
+  .forum-list {
+    padding: 30px 15px;
+  }
+
+  .forum-list h2 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  .forum-list button {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+
+  .forum-list li {
+    padding: 12px;
+  }
+
+  .forum-list li strong {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 576px) {
+  .forum-list {
+    padding: 20px 10px;
+  }
+
+  .forum-list h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .forum-list button {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    width: 100%;
+  }
+
+  .forum-list li {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .forum-list li strong {
+    font-size: 0.95rem;
+  }
+}

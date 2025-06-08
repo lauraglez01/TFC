@@ -16,7 +16,6 @@
     letter-spacing: 3px;  
 }
 
-
 .common-box {
     max-width: 90%;
     margin: 0 auto;
@@ -290,4 +289,128 @@
         flex-direction: column;
         gap: 5px;
     }
+}
+
+/* Mejoras generales para #recommended */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 991px) {
+  #recommended {
+    top: -30px;
+    padding: 0 10px;
+    margin-bottom: 40px;
+  }
+
+  #recommended h2 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  #carouselRec {
+    height: auto;
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  #carouselRec img {
+    max-height: 250px;
+    padding: 10px 0;
+  }
+
+  .carousel-content {
+    width: 100%;
+    padding: 15px 10px;
+  }
+
+  .carousel-content .book-title {
+    font-size: 1.8rem;
+  }
+
+  .carousel-content .book-description {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .carousel-content .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-top: 12px;
+  }
+
+  .custom-book-card {
+    transform: scale(1);
+    padding: 8px;
+  }
+
+  .custom-book-card .card-img-top {
+    height: 400px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 575px) {
+  #recommended {
+    top: 0;
+    margin-bottom: 30px;
+    padding: 0 5px;
+  }
+
+  #recommended h2 {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+  }
+
+  #carouselRec {
+    height: auto;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #carouselRec img {
+    max-height: 180px;
+    padding: 8px 0;
+  }
+
+  .carousel-content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  .carousel-content .book-title {
+    font-size: 1.4rem;
+  }
+
+  .carousel-content .book-description {
+    font-size: 0.9rem;
+  }
+
+  .carousel-content .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .custom-book-card {
+    padding: 5px;
+    transform: scale(1);
+  }
+
+  .custom-book-card .card-img-top {
+    height: 280px;
+  }
+
+  .book-cards .row {
+    flex-direction: column;
+  }
+
+  .book-cards .col-md-4 {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .category-btn {
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    margin-top: 15px;
+  }
 }

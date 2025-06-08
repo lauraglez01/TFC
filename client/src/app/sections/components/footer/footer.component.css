@@ -17,4 +17,45 @@
   .app-footer nav a:hover {
     text-decoration: underline;
   }
+
+/* Tablets */
+@media (max-width: 992px) {
+  .app-footer {
+    padding: 1rem 15px;
+  }
   
+  .app-footer p {
+    font-size: 1rem;
+  }
+  
+  .app-footer nav a {
+    margin: 0 0.4rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .app-footer {
+    padding: 0.8rem 10px;
+    margin-top: 1.5rem;
+  }
+
+  .app-footer p {
+    font-size: 0.9rem;
+  }
+  
+  .app-footer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  
+  .app-footer nav a {
+    margin: 0;
+    font-size: 0.9rem;
+    padding: 5px 0;
+  }
+} 

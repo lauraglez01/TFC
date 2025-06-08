@@ -53,3 +53,47 @@
 .forum-form button:hover {
     background-color: #a97d5d;
 }
+
+/* Responsive for tablets */
+@media (max-width: 992px) {
+  .forum-form {
+    padding: 30px 15px;
+  }
+
+  .entry-opt,
+  .forum-form h2 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  .forum-form input,
+  .forum-form textarea,
+  .forum-form button {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 576px) {
+  .forum-form {
+    padding: 20px 10px;
+  }
+
+  .entry-opt,
+  .forum-form h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .forum-form input,
+  .forum-form textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .forum-form button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    width: 100%;
+  }
+}

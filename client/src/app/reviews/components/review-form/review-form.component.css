@@ -87,3 +87,52 @@
 .review-form ng-template a:hover {
     color: #ffb300;
 }
+
+/* Responsive for tablets */
+@media (max-width: 992px) {
+  .review-form {
+    padding: 18px;
+  }
+
+  .review-form h4 {
+    font-size: 1.3rem;
+  }
+
+  .review-form .form-label,
+  .review-form .form-select,
+  .review-form .form-control,
+  .review-form button {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 576px) {
+  .review-form {
+    padding: 15px 10px;
+  }
+
+  .review-form h4 {
+    font-size: 1.1rem;
+  }
+
+  .review-form .form-select,
+  .review-form .form-control {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+
+  .review-form .form-label {
+    font-size: 0.95rem;
+  }
+
+  .review-form button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .review-form ng-template {
+    font-size: 1rem;
+  }
+}
