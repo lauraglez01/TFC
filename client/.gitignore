@@ -1,7 +1,8 @@
 # Angular
 dist/
 .angular/
-
+**/.angular/
+**/.angular/cache/
 node_modules/
 tmp/
 temp/
