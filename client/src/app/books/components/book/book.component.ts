@@ -68,7 +68,6 @@ export class BookComponent implements OnInit {
   
     // Si está autenticado, guarda el estado
     this.selectedStatus = status;
-    console.log(`Selected status: ${status}`);
   
     this.bookService.setBookStatus(this.bookDetails!.id, status).subscribe({
       next: () => {

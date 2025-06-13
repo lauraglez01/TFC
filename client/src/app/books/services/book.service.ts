@@ -32,7 +32,6 @@ export class BookService {
 
   public setBookStatus(bookId: number, status: string): Observable<any> {
     const token = this.authService.getToken();
-    console.log('Token enviado:', token);
     if (!token) {
       throw new Error('No authenticated token found');
     }

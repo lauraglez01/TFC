@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../books/services/book.service';
 import { Book, Reading } from '../../../books/interfaces/book.interface';
+import { AuthService } from '../../../sections/services/auth.service';
+import { User } from '../../../user/interfaces/user.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +12,17 @@ import { Book, Reading } from '../../../books/interfaces/book.interface';
 })
 export class DashboardComponent implements OnInit {
   public booksByStatus: { [status: string]: Book[] } = {};
+  public user: User | null = null;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService,
+    private authService: AuthService 
+  ) {}
 
   ngOnInit(): void {
+    this.authService.loadUser().subscribe({
+      next: (user) => this.user = user,
+      error: () => this.user = null
+    });
     this.bookService.getUserReadings().subscribe((readings: Reading[]) => {
       this.booksByStatus = {};
 

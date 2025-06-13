@@ -36,7 +36,6 @@ export class ForumCommentComponent {
 
     this.forumService.addComment(this.postId, this.comment).subscribe({
       next: () => {
-        console.log('Comentario agregado correctamente');
         this.comment = '';
         this.commentAdded.emit();
       },

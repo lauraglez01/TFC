@@ -1,34 +1,30 @@
 <div class="dashboard">
-    <h2>Personal Library</h2>
-  
-    @for (status of getStatuses(); track status; let i = $index) {
-      <div class="status-section">
-        <h3>{{ status | titlecase }}</h3>
-  
-        @if (booksByStatus[status] && booksByStatus[status].length > 0) {
-          <ul class="book-list">
-            @for (book of booksByStatus[status]; track book.id; let i = $index) {
-              <li class="book-card" [routerLink]="['/book', book.id]">
-                <img 
-                  [src]="book.cover" 
-                  alt="{{ book.title }} cover" 
-                  class="book-cover" 
-                />
-                <div class="book-info">
-                  <h4>{{ book.title }}</h4>
-                  <p><strong>Author:</strong> {{ book.author }}</p>
-                  <p>
-                    <strong>Categories:</strong> 
-                    {{ getCategoryNames(book) }}
-                  </p>
-                </div>
-              </li>
-            }
-          </ul>
-        } @else {
-          <p class="no-books-message">No books in this status 🍂</p>
-        }
-      </div>
+  <h2>
+    {{ user?.name }}'s Library
+  </h2>
+  @for (status of getStatuses(); track status; let i = $index) {
+  <div class="status-section">
+    <h3>{{ status | titlecase }}</h3>
+
+    @if (booksByStatus[status] && booksByStatus[status].length > 0) {
+    <ul class="book-list">
+      @for (book of booksByStatus[status]; track book.id; let i = $index) {
+      <li class="book-card" [routerLink]="['/book', book.id]">
+        <img [src]="book.cover" alt="{{ book.title }} cover" class="book-cover" />
+        <div class="book-info">
+          <h4>{{ book.title }}</h4>
+          <p><strong>Author:</strong> {{ book.author }}</p>
+          <p>
+            <strong>Categories:</strong>
+            {{ getCategoryNames(book) }}
+          </p>
+        </div>
+      </li>
+      }
+    </ul>
+    } @else {
+    <p class="no-books-message">No books in this status 🍂</p>
     }
   </div>
-  
+  }
+</div>

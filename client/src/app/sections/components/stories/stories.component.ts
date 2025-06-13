@@ -31,7 +31,6 @@ onFileSelected(e: Event) {
 
   this.svc.uploadStory(file).subscribe({
     next: (res) => {
-      console.log('Archivo subido:', res.story); // Depuración: Verifica que el archivo se guarda en la propiedad file
       this.loadStories(); // Recarga las historias después de subir el archivo
     },
     error: (err) => {

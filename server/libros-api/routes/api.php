@@ -78,7 +78,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/forum/{id}', [ForumPostController::class, 'destroy']);
 
     Route::post('/forum/{postId}/comments', [ForumCommentController::class, 'store']); 
-    Route::delete('/comments/{id}', [ForumCommentController::class, 'destroy']);
+    Route::delete('forum/comments/{id}', [ForumCommentController::class, 'destroy']);
 });
 
 // Autenticación

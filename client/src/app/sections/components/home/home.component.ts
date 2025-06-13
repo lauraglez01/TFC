@@ -72,7 +72,6 @@ export class HomeComponent implements OnInit {
   onSearchInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.searchQuery = input.value;
-    console.log('Search input:', this.searchQuery);
     this.filterBooks();
   }
 
