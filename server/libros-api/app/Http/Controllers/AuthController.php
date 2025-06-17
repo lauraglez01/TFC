@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->except([
+            'login',
+            'register',
+            'regenerateCode',
+            'regeneratePassword'
+        ]);
+    }
     public function register(Request $request)
     {
         //validaciones de campos que viajan en la request
@@ -66,20 +75,20 @@ class AuthController extends Controller
     {
         // Get the authenticated user
         $user = auth()->user();
-    
+
         // Check if the user is authenticated
         if (!$user) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-    
+
         // Delete all the user's tokens to log them out
         $user->tokens->each(function ($token) {
             $token->delete();
         });
-    
+
         return response()->json(['message' => 'Usuario deslogado']);
     }
-    
+
 
     public function regenerateCode(Request $request)
     {

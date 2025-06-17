@@ -19,7 +19,7 @@
 .common-box {
     max-width: 90%;
     margin: 0 auto;
-    background: linear-gradient(-135deg, #c9a375, #e0c3a3, #f5e0c3);
+    background: rgb(250, 232, 200);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
